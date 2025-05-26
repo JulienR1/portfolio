@@ -26,6 +26,7 @@ jobs:
           node-version: "22.x"
       - uses: actions/checkout@v4
 
+      - run: npm ci
       - run: npm run build
 
       - uses: actions/configure-pages@v4
