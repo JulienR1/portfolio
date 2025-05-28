@@ -1,20 +1,22 @@
 {
-  "name": "portfolio",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/sitemap": "^3.4.0",
-    "astro": "^5.8.0",
-    "sass": "^1.89.0"
-  },
-  "devDependencies": {
-    "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1"
-  }
+    "name": "portfolio",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "lint": "astro check"
+    },
+    "dependencies": {
+        "@astrojs/check": "^0.9.4",
+        "@astrojs/sitemap": "^3.4.0",
+        "astro": "^5.8.0",
+        "sass": "^1.89.0",
+        "typescript": "^5.8.3"
+    },
+    "devDependencies": {
+        "prettier": "^3.5.3",
+        "prettier-plugin-astro": "^0.14.1"
+    }
 }
