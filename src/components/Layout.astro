@@ -15,8 +15,30 @@ const title = [Astro.props.title, "Julien Rousseau"]
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+
+        <link rel="stylesheet" href="modern-normalize.min.css" />
     </head>
     <body>
         <slot />
     </body>
 </html>
+
+<style is:global>
+    @font-face {
+        font-family: "noto";
+        src: url("noto-sans.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "noto";
+        src: url("noto-sans-italic.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: italic;
+    }
+
+    * {
+        font-family: noto, sans-serif;
+    }
+</style>
