@@ -1,7 +1,87 @@
 ---
 import Layout from "../components/Layout.astro";
+import Github from "../logos/Github.astro";
+import LinkedIn from "../logos/LinkedIn.astro";
+import LanguageIcon from "../logos/Language.astro";
+import { getAbsoluteLocaleUrl } from "astro:i18n";
+import {
+    translate,
+    type Language,
+    type Expect,
+    type AssertEqual,
+    type JoinKeys,
+} from "../i18n";
+
+const keys = {
+    en: {
+        cpi: {
+            label: "CEP",
+            description: "Candidate to the Engineering Profession",
+            link: "https://www.oiq.qc.ca/en/futurs-membres/devenir-ingenieur-au-quebec/professional-admission-program/",
+        },
+        developer: "Full stack developer",
+        about: "About",
+        projects: "Projects",
+    },
+    fr: {
+        cpi: {
+            label: "CPI",
+            description: "Candidat à la profession d'ingénieur",
+            link: "https://www.oiq.qc.ca/futurs-membres/devenir-ingenieur-au-quebec/programme-dacces-a-la-profession/",
+        },
+        developer: "Développeur full stack",
+        about: "À propos",
+        projects: "Projets",
+    },
+} satisfies Record<Language, any>;
+
+type testKeys = Expect<
+    AssertEqual<JoinKeys<(typeof keys)["en"]>, JoinKeys<(typeof keys)["fr"]>>
+>;
+
+const t = translate(keys, Astro.currentLocale);
 ---
 
 <Layout>
-    <h1>Portfolio</h1>
+    <aside>
+        <hgroup>
+            <h1>Julien Rousseau</h1>
+            <h2>
+                <a href={t("cpi.link")} title={t("cpi.description")}>
+                    {t("cpi.label")}
+                </a>
+            </h2>
+            <h3>{t("developer")}</h3>
+        </hgroup>
+
+        <nav>
+            <a href="#about">{t("about")}</a>
+            <a href="#projects">{t("projects")}</a>
+        </nav>
+
+        <ul>
+            <li>
+                <a href="https://github.com/julienR1/">
+                    <Github style={{ color: "black" }} />
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://www.linkedin.com/in/julien-rousseau-cpi-402475179/"
+                >
+                    <LinkedIn style={{ color: "black" }} />
+                </a>
+            </li>
+            <li>
+                <a
+                    title="test"
+                    href={getAbsoluteLocaleUrl(
+                        Astro.currentLocale === "en" ? "fr" : "en",
+                    )}
+                >
+                    <LanguageIcon style={{ color: "black" }} />
+                </a>
+            </li>
+        </ul>
+    </aside>
 </Layout>
