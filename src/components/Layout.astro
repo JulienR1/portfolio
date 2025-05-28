@@ -8,7 +8,7 @@ const title = [Astro.props.title, "Julien Rousseau"]
     .join(" | ");
 ---
 
-<html lang="en">
+<html lang={Astro.currentLocale ?? "en"}>
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
