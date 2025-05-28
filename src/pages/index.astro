@@ -3,7 +3,7 @@ import Layout from "../components/Layout.astro";
 import Github from "../logos/Github.astro";
 import LinkedIn from "../logos/LinkedIn.astro";
 import LanguageIcon from "../logos/Language.astro";
-import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import {
     translate,
     type Language,
@@ -74,8 +74,8 @@ const t = translate(keys, Astro.currentLocale);
             </li>
             <li>
                 <a
-                    title="test"
-                    href={getAbsoluteLocaleUrl(
+                    title={t("translate")}
+                    href={getRelativeLocaleUrl(
                         Astro.currentLocale === "en" ? "fr" : "en",
                     )}
                 >
