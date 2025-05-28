@@ -2,42 +2,44 @@
 import Layout from "../components/Layout.astro";
 import Github from "../logos/Github.astro";
 import LinkedIn from "../logos/LinkedIn.astro";
-import LanguageIcon from "../logos/Language.astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import {
-    translate,
-    type Language,
-    type Expect,
-    type AssertEqual,
-    type JoinKeys,
-} from "../i18n";
+import Mail from "../logos/Mail.astro";
+import LanguageToggle from "../components/LanguageToggle.astro";
+import { translate } from "../i18n";
 
 const keys = {
     en: {
+        skip: "Skip to content",
         cpi: {
             label: "CEP",
             description: "Candidate to the Engineering Profession",
             link: "https://www.oiq.qc.ca/en/futurs-membres/devenir-ingenieur-au-quebec/professional-admission-program/",
         },
         developer: "Full stack developer",
-        about: "About",
-        projects: "Projects",
+        summary:
+            "I use computers to solve fun and interesting problems in a creative manner.",
+        sections: {
+            about: "About",
+            experience: "Experience",
+            projects: "Projects",
+        },
     },
     fr: {
+        skip: "Passer au contenu",
         cpi: {
             label: "CPI",
             description: "Candidat à la profession d'ingénieur",
             link: "https://www.oiq.qc.ca/futurs-membres/devenir-ingenieur-au-quebec/programme-dacces-a-la-profession/",
         },
         developer: "Développeur full stack",
-        about: "À propos",
-        projects: "Projets",
+        summary:
+            "Je résous des problèmes intéressants et stimulants avec des ordinateurs.",
+        sections: {
+            about: "À propos",
+            experience: "Expérience",
+            projects: "Projets",
+        },
     },
-} satisfies Record<Language, any>;
-
-type testKeys = Expect<
-    AssertEqual<JoinKeys<(typeof keys)["en"]>, JoinKeys<(typeof keys)["fr"]>>
->;
+};
 
 const t = translate(keys, Astro.currentLocale);
 ---
@@ -45,43 +47,120 @@ const t = translate(keys, Astro.currentLocale);
 <Layout>
     <aside>
         <hgroup>
-            <h1>Julien Rousseau</h1>
-            <h2>
-                <a href={t("cpi.link")} title={t("cpi.description")}>
-                    {t("cpi.label")}
-                </a>
-            </h2>
-            <h3>{t("developer")}</h3>
+            <h1>
+                <span>Julien Rousseau,</span>
+                <span>
+                    <a href={t("cpi.link")} title={t("cpi.description")}>
+                        {t("cpi.label")}
+                    </a>
+                </span>
+            </h1>
+            <p class="title">{t("developer")}</p>
+            <p class="summary">{t("summary")}</p>
         </hgroup>
 
         <nav>
-            <a href="#about">{t("about")}</a>
-            <a href="#projects">{t("projects")}</a>
+            <a href="#about">{t("sections.about")}</a>
+            <a href="#experience">{t("sections.experience")}</a>
+            <a href="#projects">{t("sections.projects")}</a>
         </nav>
 
         <ul>
             <li>
                 <a href="https://github.com/julienR1/">
-                    <Github style={{ color: "black" }} />
+                    <Github />
                 </a>
             </li>
             <li>
                 <a
                     href="https://www.linkedin.com/in/julien-rousseau-cpi-402475179/"
                 >
-                    <LinkedIn style={{ color: "black" }} />
+                    <LinkedIn />
                 </a>
-            </li>
-            <li>
-                <a
-                    title={t("translate")}
-                    href={getRelativeLocaleUrl(
-                        Astro.currentLocale === "en" ? "fr" : "en",
-                    )}
-                >
-                    <LanguageIcon style={{ color: "black" }} />
-                </a>
+                <li>
+                    <a href="mailto:julienrous16@gmail.com">
+                        <Mail />
+                    </a>
+                </li>
+                <li>
+                    <LanguageToggle />
+                </li>
             </li>
         </ul>
     </aside>
+
+    <main>
+        <section id="about">ABOUT</section>
+        <section id="experience">EXPERIENCE</section>
+        <section id="projects">PROJECTS</section>
+    </main>
+
+    <style lang="scss">
+        aside {
+            padding-bottom: 8em;
+
+            hgroup {
+                margin: 0.5em 0;
+
+                h1,
+                p {
+                    margin: 0;
+                    padding: 0.2em 0;
+                }
+
+                h1 {
+                    font-weight: 700;
+                    font-size: 1.7em;
+                }
+
+                p.title {
+                    font-weight: 500;
+                    font-size: 1.2em;
+                }
+
+                p.summary {
+                    font-weight: 300;
+                    padding-top: 1em;
+                }
+
+                a {
+                    color: inherit;
+                    font-size: 0.8em;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+            }
+
+            nav {
+                display: none;
+            }
+
+            ul {
+                display: flex;
+                list-style-type: none;
+                align-items: center;
+                gap: 0.5em;
+                margin: 0;
+                padding: 0;
+                padding-top: 0.5em;
+
+                a {
+                    display: block;
+                    width: 1.75em;
+                    height: 1.75em;
+                    color: black;
+                }
+
+                li:last-of-type {
+                    display: none;
+                }
+            }
+        }
+
+        @media (min-width: 50rem) {
+            nav {
+                display: block;
+            }
+        }
+    </style>
 </Layout>
