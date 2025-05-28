@@ -1,0 +1,24 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Language from "../logos/Language.astro";
+import { translate } from "../i18n";
+
+interface Props {
+    className?: string;
+    style?: string | Record<string, any>;
+}
+
+const t = translate(
+    { en: { translate: "Français" }, fr: { translate: "English" } },
+    Astro.currentLocale,
+);
+---
+
+<a
+    class={Astro.props.className}
+    style={Astro.props.style}
+    title={t("translate")}
+    href={getRelativeLocaleUrl(Astro.currentLocale === "en" ? "fr" : "en")}
+>
+    <Language style={{ color: "black" }} />
+</a>

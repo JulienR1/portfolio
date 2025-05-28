@@ -1,0 +1,26 @@
+---
+import LanguageToggle from "./LanguageToggle.astro";
+---
+
+<header>
+    <LanguageToggle />
+</header>
+
+<style>
+    header {
+        position: fixed;
+        padding: 1.5em;
+        left: 0;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        opacity: 0.7;
+    }
+
+    @media (min-width: 50em) {
+        header {
+            display: none;
+        }
+    }
+</style>

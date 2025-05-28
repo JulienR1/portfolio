@@ -8,17 +8,36 @@ export type JoinKeys<T, Prev extends string = ""> = {
       : never;
 }[keyof T];
 
-export type AssertEqual<A, B> =
-  (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B ? 1 : 2
-    ? true
+type KeysMatch<A, B> =
+  Exclude<keyof A, keyof B> extends never
+    ? Exclude<keyof B, keyof A> extends never
+      ? {
+          [K in keyof A]: K extends keyof B
+            ? A[K] extends object
+              ? B[K] extends object
+                ? KeysMatch<A[K], B[K]>
+                : false
+              : true
+            : false;
+        }[keyof A] extends false
+        ? false
+        : true
+      : false
     : false;
 
-export type Expect<T extends true> = T;
+type ValidKeys<T extends Pick<T, Language>> =
+  KeysMatch<T["en"], T["fr"]> extends true
+    ? T
+    : { error: "localizations keys do not match" };
 
 export function translate<T extends Pick<T, Language>>(
-  keys: T,
+  keys: ValidKeys<T>,
   locale: string | undefined,
 ) {
+  if ("error" in keys) {
+    throw new Error("this should not have happened, somebody used 'any'");
+  }
+
   return function (key: JoinKeys<T["en"]>) {
     const value = (key as string)
       .split(".")
