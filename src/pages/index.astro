@@ -59,9 +59,18 @@ const t = translate(keys, Astro.currentLocale);
         </hgroup>
 
         <nav>
-            <a href="#about">{t("sections.about")}</a>
-            <a href="#experience">{t("sections.experience")}</a>
-            <a href="#projects">{t("sections.projects")}</a>
+            <a href="#about" id="link-about" data-selected="true">
+                <span></span>
+                <span>{t("sections.about")}</span>
+            </a>
+            <a href="#experience" id="link-experience" data-selected="false">
+                <span></span>
+                <span>{t("sections.experience")}</span>
+            </a>
+            <a href="#projects" id="link-projects" data-selected="false">
+                <span></span>
+                <span>{t("sections.projects")}</span>
+            </a>
         </nav>
 
         <ul>
@@ -124,142 +133,203 @@ const t = translate(keys, Astro.currentLocale);
             <h2>{t("sections.projects")}</h2>
         </section>
     </main>
+</Layout>
 
-    <style lang="scss">
-        aside {
-            padding-bottom: 8em;
+<script>
+    if (
+        "IntersectionObserver" in window &&
+        "IntersectionObserverEntry" in window &&
+        "intersectionRatio" in window.IntersectionObserverEntry.prototype
+    ) {
+        const linkIds = ["about", "experience", "projects"];
+        const links = linkIds.reduce(
+            (acc, linkId) => ({
+                ...acc,
+                [linkId]: {
+                    element: document.getElementById(`link-${linkId}`)!,
+                    intersecting: true,
+                },
+            }),
+            {} as Record<
+                string,
+                { element: HTMLElement; intersecting: boolean }
+            >,
+        );
 
-            hgroup {
-                margin: 0.5em 0;
+        const observer = new IntersectionObserver(([entry]) => {
+            links[entry.target.id].intersecting = entry.isIntersecting;
 
-                h1,
-                p {
-                    margin: 0;
-                    padding: 0.2em 0;
-                }
-
-                h1 {
-                    font-weight: 700;
-                    font-size: 1.7em;
-                }
-
-                p.title {
-                    font-weight: 500;
-                    font-size: 1.2em;
-                }
-
-                p.summary {
-                    font-weight: 300;
-                    padding-top: 1em;
-                }
-
-                a {
-                    color: inherit;
-                    font-size: 0.8em;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                }
+            let found = false;
+            for (const link of Object.values(links)) {
+                const selected = found === false && link.intersecting;
+                link.element.dataset.selected = selected.toString();
+                found ||= link.intersecting;
             }
 
-            nav {
+            if (!found) {
+                links[linkIds.at(-1)!].element.dataset.selected = "true";
+            }
+        });
+        document
+            .querySelectorAll("main section")
+            .forEach((section) => observer.observe(section));
+    }
+</script>
+
+<style lang="scss">
+    aside {
+        padding-bottom: 8em;
+
+        hgroup {
+            margin: 0.5em 0;
+
+            h1,
+            p {
+                margin: 0;
+                padding: 0.2em 0;
+            }
+
+            h1 {
+                font-weight: 700;
+                font-size: 1.7em;
+            }
+
+            p.title {
+                font-weight: 500;
+                font-size: 1.2em;
+            }
+
+            p.summary {
+                font-weight: 300;
+                padding-top: 1em;
+            }
+
+            a {
+                color: inherit;
+                font-size: 0.8em;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+
+        nav {
+            display: none;
+        }
+
+        ul {
+            display: flex;
+            list-style-type: none;
+            align-items: center;
+            gap: 0.5em;
+            margin: 0;
+            padding: 0;
+            padding-top: 0.5em;
+
+            li,
+            a {
+                display: block;
+                width: 1.75em;
+                height: 1.75em;
+                color: black;
+            }
+
+            li:last-of-type {
                 display: none;
             }
+        }
+    }
 
-            ul {
-                display: flex;
-                list-style-type: none;
-                align-items: center;
-                gap: 0.5em;
-                margin: 0;
-                padding: 0;
-                padding-top: 0.5em;
+    section {
+        h2 {
+            text-transform: uppercase;
+            font-size: 1.2em;
+            font-weight: 700;
+            padding: 1em 0;
+        }
 
-                li,
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+    }
+
+    @media (min-width: 50rem) {
+        body {
+            display: grid;
+            grid-template-columns: 22.5rem minmax(auto, 37.5rem);
+            justify-content: space-around;
+            max-width: 100rem;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        aside,
+        main {
+            padding: 3em 0;
+        }
+
+        aside {
+            top: 3em;
+            position: sticky;
+            display: grid;
+            grid-template-rows: 30% auto min-content;
+            max-height: 90vh;
+
+            nav {
+                display: block;
+
                 a {
-                    display: block;
-                    width: 1.75em;
-                    height: 1.75em;
+                    display: flex;
+                    gap: 0.5em;
+                    align-items: center;
+                    text-decoration: none;
+                    text-transform: uppercase;
                     color: black;
-                }
+                    padding: 1em 0;
+                    margin: 0.5em 0;
+                    font-weight: 600;
+                    opacity: 0.5;
+                    transition: all ease 100ms;
+                    width: fit-content;
 
-                li:last-of-type {
-                    display: none;
-                }
-            }
-        }
-
-        section {
-            h2 {
-                text-transform: uppercase;
-                font-size: 1.2em;
-                font-weight: 700;
-                padding: 1em 0;
-            }
-
-            ul {
-                margin: 0;
-                padding: 0;
-                list-style-type: none;
-            }
-        }
-
-        @media (min-width: 50rem) {
-            body {
-                display: grid;
-                grid-template-columns: 22.5rem minmax(auto, 37.5rem);
-                justify-content: space-around;
-                max-width: 100rem;
-                margin: 0 auto;
-                gap: 2rem;
-            }
-
-            aside,
-            main {
-                padding: 3em 0;
-            }
-
-            aside {
-                top: 3em;
-                position: sticky;
-                display: grid;
-                grid-template-rows: 30% auto min-content;
-                max-height: 90vh;
-
-                nav {
-                    display: block;
-
-                    a {
+                    span {
                         display: block;
-                        text-decoration: none;
-                        text-transform: uppercase;
-                        color: black;
-                        padding: 1em 0;
-                        font-weight: 600;
-                        opacity: 0.5;
-                        transition: all ease 100ms;
+                    }
 
-                        &:hover,
-                        &:focus,
-                        &:focus-within {
-                            opacity: 1;
-                            transform: translateX(1em);
+                    span:first-of-type {
+                        width: 3em;
+                        height: 2px;
+                        max-width: 1.5em;
+                        background: black;
+                        transition: all ease 100ms;
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &:focus-within,
+                    &[data-selected="true"] {
+                        opacity: 1;
+
+                        span:first-of-type {
+                            max-width: 3em;
                         }
                     }
                 }
-
-                ul li:last-of-type {
-                    display: block;
-                }
             }
 
-            main {
+            ul li:last-of-type {
+                display: block;
             }
         }
 
-        @media (min-width: 56rem) {
-            body {
-                gap: 5rem;
-            }
+        main {
         }
-    </style>
-</Layout>
+    }
+
+    @media (min-width: 56rem) {
+        body {
+            gap: 5rem;
+        }
+    }
+</style>
