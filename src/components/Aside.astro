@@ -1,0 +1,257 @@
+---
+import { translate } from "../i18n";
+import Mail from "../logos/Mail.astro";
+import Github from "../logos/Github.astro";
+import LinkedIn from "../logos/LinkedIn.astro";
+import LanguageToggle from "./LanguageToggle.astro";
+
+const keys = {
+    en: {
+        cpi: {
+            label: "CEP",
+            description: "Candidate to the Engineering Profession",
+            link: "https://www.oiq.qc.ca/en/futurs-membres/devenir-ingenieur-au-quebec/professional-admission-program/",
+        },
+        developer: "Full stack developer",
+        summary:
+            "I use computers to solve fun and interesting problems in a creative manner.",
+        sections: {
+            about: "About",
+            experience: "Experience",
+            projects: "Projects",
+        },
+    },
+    fr: {
+        cpi: {
+            label: "CPI",
+            description: "Candidat à la profession d'ingénieur",
+            link: "https://www.oiq.qc.ca/futurs-membres/devenir-ingenieur-au-quebec/programme-dacces-a-la-profession/",
+        },
+        developer: "Développeur full stack",
+        summary:
+            "Je résous des problèmes intéressants et stimulants avec des ordinateurs.",
+        sections: {
+            about: "À propos",
+            experience: "Expérience",
+            projects: "Projets",
+        },
+    },
+};
+
+const t = translate(keys, Astro.currentLocale);
+---
+
+<aside>
+    <hgroup>
+        <h1>
+            <span>Julien Rousseau,</span>
+            <span>
+                <a href={t("cpi.link")} title={t("cpi.description")}>
+                    {t("cpi.label")}
+                </a>
+            </span>
+        </h1>
+        <p class="title">{t("developer")}</p>
+        <p class="summary">{t("summary")}</p>
+    </hgroup>
+
+    <nav>
+        <a href="#about" id="link-about" data-selected="true">
+            <span></span>
+            <span>{t("sections.about")}</span>
+        </a>
+        <a href="#experience" id="link-experience" data-selected="false">
+            <span></span>
+            <span>{t("sections.experience")}</span>
+        </a>
+        <a href="#projects" id="link-projects" data-selected="false">
+            <span></span>
+            <span>{t("sections.projects")}</span>
+        </a>
+    </nav>
+
+    <ul>
+        <li>
+            <a href="https://github.com/julienR1/">
+                <Github />
+            </a>
+        </li>
+        <li>
+            <a
+                href="https://www.linkedin.com/in/julien-rousseau-cpi-402475179/"
+            >
+                <LinkedIn />
+            </a>
+            <li>
+                <a href="mailto:julienrous16@gmail.com">
+                    <Mail />
+                </a>
+            </li>
+            <li>
+                <LanguageToggle />
+            </li>
+        </li>
+    </ul>
+</aside>
+
+<script>
+    if (
+        "IntersectionObserver" in window &&
+        "IntersectionObserverEntry" in window &&
+        "intersectionRatio" in window.IntersectionObserverEntry.prototype
+    ) {
+        const linkIds = ["about", "experience", "projects"];
+        const links = linkIds.reduce(
+            (acc, linkId) => ({
+                ...acc,
+                [linkId]: {
+                    element: document.getElementById(`link-${linkId}`)!,
+                    intersecting: true,
+                },
+            }),
+            {} as Record<
+                string,
+                { element: HTMLElement; intersecting: boolean }
+            >,
+        );
+
+        const observer = new IntersectionObserver(([entry]) => {
+            links[entry.target.id].intersecting = entry.isIntersecting;
+
+            let found = false;
+            for (const link of Object.values(links)) {
+                const selected = found === false && link.intersecting;
+                link.element.dataset.selected = selected.toString();
+                found ||= link.intersecting;
+            }
+
+            if (!found) {
+                links[linkIds.at(-1)!].element.dataset.selected = "true";
+            }
+        });
+        document
+            .querySelectorAll("main section")
+            .forEach((section) => observer.observe(section));
+    }
+</script>
+
+<style lang="scss">
+    aside {
+        padding-bottom: 8em;
+
+        hgroup {
+            margin: 0.5em 0;
+
+            h1,
+            p {
+                margin: 0;
+                padding: 0.2em 0;
+            }
+
+            h1 {
+                font-weight: 700;
+                font-size: 1.7em;
+            }
+
+            p.title {
+                font-weight: 500;
+                font-size: 1.2em;
+            }
+
+            p.summary {
+                font-weight: 300;
+                padding-top: 1em;
+            }
+
+            a {
+                color: inherit;
+                font-size: 0.8em;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+
+        nav {
+            display: none;
+        }
+
+        ul {
+            display: flex;
+            list-style-type: none;
+            align-items: center;
+            gap: 0.5em;
+            margin: 0;
+            padding: 0;
+            padding-top: 0.5em;
+
+            li,
+            a {
+                display: block;
+                width: 1.75em;
+                height: 1.75em;
+                color: black;
+            }
+
+            li:last-of-type {
+                display: none;
+            }
+        }
+    }
+
+    @media (min-width: 50rem) {
+        aside {
+            padding: 3em 0;
+            top: 3em;
+            position: sticky;
+            display: grid;
+            grid-template-rows: 30% auto min-content;
+            max-height: 90vh;
+
+            nav {
+                display: block;
+
+                a {
+                    display: flex;
+                    gap: 0.5em;
+                    align-items: center;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    color: black;
+                    padding: 1em 0;
+                    margin: 0.5em 0;
+                    font-weight: 600;
+                    opacity: 0.5;
+                    transition: all ease 100ms;
+                    width: fit-content;
+
+                    span {
+                        display: block;
+                    }
+
+                    span:first-of-type {
+                        width: 3em;
+                        height: 2px;
+                        max-width: 1.5em;
+                        background: black;
+                        transition: all ease 100ms;
+                    }
+
+                    &:hover,
+                    &:focus,
+                    &:focus-within,
+                    &[data-selected="true"] {
+                        opacity: 1;
+
+                        span:first-of-type {
+                            max-width: 3em;
+                        }
+                    }
+                }
+            }
+
+            ul li:last-of-type {
+                display: block;
+            }
+        }
+    }
+</style>
