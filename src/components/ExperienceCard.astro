@@ -1,0 +1,76 @@
+---
+import OpenInNew from "../logos/OpenInNew.astro";
+
+interface Props {
+    start: string;
+    end: string;
+    title: string;
+    subtitle?: string;
+    company: string;
+    url?: string;
+    tags: string[];
+    children: any;
+}
+
+const { start, end, title, subtitle, company, url, tags } = Astro.props;
+---
+
+<li>
+    <div class="period">
+        <span>{start}</span>
+        <span>&mdash;</span>
+        <span>{end}</span>
+    </div>
+
+    <div>
+        <div>
+            <span>{title}</span>
+            <span>&middot;</span>
+            {
+                url ? (
+                    <a href={url}>
+                        <span>{company}</span>
+                        <span>
+                            <OpenInNew style="width: 18px; height: 18px;" />
+                        </span>
+                    </a>
+                ) : (
+                    <span>company</span>
+                )
+            }
+        </div>
+        {subtitle && <div>{subtitle}</div>}
+    </div>
+
+    <div>
+        <slot />
+    </div>
+
+    {
+        tags.length > 0 && (
+            <ul>
+                {tags.map((tag) => (
+                    <li>{tag}</li>
+                ))}
+            </ul>
+        )
+    }
+</li>
+
+<style lang="scss">
+    li {
+        padding: 1em 0;
+
+        .period {
+            font-size: 0.8em;
+            font-weight: 400;
+            text-transform: uppercase;
+            padding-bottom: 0.5em;
+            opacity: 0.7;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+    }
+</style>

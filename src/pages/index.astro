@@ -5,6 +5,7 @@ import LinkedIn from "../logos/LinkedIn.astro";
 import Mail from "../logos/Mail.astro";
 import LanguageToggle from "../components/LanguageToggle.astro";
 import { translate } from "../i18n";
+import ExperienceCard from "../components/ExperienceCard.astro";
 
 const keys = {
     en: {
@@ -90,9 +91,36 @@ const t = translate(keys, Astro.currentLocale);
     </aside>
 
     <main>
-        <section id="about">ABOUT</section>
-        <section id="experience">EXPERIENCE</section>
-        <section id="projects">PROJECTS</section>
+        <section id="about">
+            <h2>{t("sections.about")}</h2>
+        </section>
+
+        <section id="experience">
+            <h2>{t("sections.experience")}</h2>
+
+            <ul>
+                <ExperienceCard
+                    start="May 2024"
+                    end="Dec. 2024"
+                    title="Software developer"
+                    company="Agilean"
+                    url="https://alix.ai"
+                    tags={[]}
+                >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis ratione exercitationem voluptas qui aliquid voluptatum
+                    laborum asperiores esse officia, unde aspernatur facilis,
+                    eaque numquam officiis corrupti deserunt ducimus ipsa,
+                    consequatur animi dolorem iusto incidunt reiciendis?
+                    Blanditiis ea, dolore dolorem hic placeat repellendus nulla
+                    pariatur. Ea voluptatibus cum totam odio. Assumenda!
+                </ExperienceCard>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>{t("sections.projects")}</h2>
+        </section>
     </main>
 
     <style lang="scss">
@@ -154,6 +182,21 @@ const t = translate(keys, Astro.currentLocale);
                 li:last-of-type {
                     display: none;
                 }
+            }
+        }
+
+        section {
+            h2 {
+                text-transform: uppercase;
+                font-size: 1em;
+                font-weight: 700;
+                padding: 1em 0;
+            }
+
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
             }
         }
 
