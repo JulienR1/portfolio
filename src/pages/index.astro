@@ -9,7 +9,6 @@ import ExperienceCard from "../components/ExperienceCard.astro";
 
 const keys = {
     en: {
-        skip: "Skip to content",
         cpi: {
             label: "CEP",
             description: "Candidate to the Engineering Profession",
@@ -25,7 +24,6 @@ const keys = {
         },
     },
     fr: {
-        skip: "Passer au contenu",
         cpi: {
             label: "CPI",
             description: "Candidat à la profession d'ingénieur",
@@ -176,6 +174,7 @@ const t = translate(keys, Astro.currentLocale);
                 padding: 0;
                 padding-top: 0.5em;
 
+                li,
                 a {
                     display: block;
                     width: 1.75em;
@@ -205,8 +204,61 @@ const t = translate(keys, Astro.currentLocale);
         }
 
         @media (min-width: 50rem) {
-            nav {
-                display: block;
+            body {
+                display: grid;
+                grid-template-columns: 22.5rem minmax(auto, 37.5rem);
+                justify-content: space-around;
+                max-width: 100rem;
+                margin: 0 auto;
+                gap: 2rem;
+            }
+
+            aside,
+            main {
+                padding: 3em 0;
+            }
+
+            aside {
+                top: 3em;
+                position: sticky;
+                display: grid;
+                grid-template-rows: 30% auto min-content;
+                max-height: 90vh;
+
+                nav {
+                    display: block;
+
+                    a {
+                        display: block;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        color: black;
+                        padding: 1em 0;
+                        font-weight: 600;
+                        opacity: 0.5;
+                        transition: all ease 100ms;
+
+                        &:hover,
+                        &:focus,
+                        &:focus-within {
+                            opacity: 1;
+                            transform: translateX(1em);
+                        }
+                    }
+                }
+
+                ul li:last-of-type {
+                    display: block;
+                }
+            }
+
+            main {
+            }
+        }
+
+        @media (min-width: 56rem) {
+            body {
+                gap: 5rem;
             }
         }
     </style>
