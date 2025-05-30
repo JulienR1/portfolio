@@ -1,0 +1,138 @@
+{
+    "agilean": {
+        "en": {
+            "start": "May",
+            "end": "December 2024",
+            "title": "Software developer",
+            "company": "Agilean",
+            "url": "https://alix.ai",
+            "subtitle": "Co-op",
+            "description": "Developed Alix - a management and tracking tool for SME. Developed internal tools to facilitate customer support. Reduced latency within the project for recurring jobs."
+        },
+        "fr": {
+            "start": "Mai",
+            "end": "Décembre 2024",
+            "title": "Développeur logiciel",
+            "company": "Agilean",
+            "url": "https://alix.ai",
+            "subtitle": "Co-op",
+            "description": "Développement d'Alix - un logiciel de gestion et de suivi pour PME. Développement d'outils internes pour mieux supporter les utilisateurs. Amélioration des performances des processus récurrents au sein du projet."
+        },
+        "tags": [
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "Node.js",
+            "PostgreSQL"
+        ]
+    },
+    "pinax": {
+        "en": {
+            "start": "September",
+            "end": "December 2023",
+            "title": "Web3 backend developer",
+            "company": "Pinax",
+            "url": "https://pinax.network",
+            "subtitle": "Co-op | OSS",
+            "description": "Developed an ETL process using Substreams and ClickHouse to index various blockchains and power multiple 'token apis'. Contributed to OSS for <a href=\"https://thegraph.com/\"><i>TheGraph</i></a>."
+        },
+        "fr": {
+            "start": "Septembre",
+            "end": "Décembre 2023",
+            "title": "Développeur backend web3",
+            "company": "Pinax",
+            "url": "https://pinax.network",
+            "subtitle": "Co-op | OSS",
+            "description": "Développement d'un processus ETL utilisant Substreams et ClickHouse afin d'indexer plusieurs chaînes et de concevoir plusieurs \"token apis\". Contribue au OSS de <a href=\"https://thegraph.com/\"><i>TheGraph</i></a>."
+        },
+        "tags": [
+            "TypeScript",
+            "Bun",
+            "Substreams",
+            "TheGraph",
+            "ClickHouse"
+        ]
+    },
+    "flo": {
+        "en": {
+            "start": "September",
+            "end": "December 2022",
+            "title": "Full stack developer",
+            "company": "Flo",
+            "url": "https://flo.ca",
+            "subtitle": "Co-op",
+            "description": "Developed internal tools to monitor in real time every EV charging station networks in North America. Used tools to migrate networks from one server technology to another without incidents."
+        },
+        "fr": {
+            "start": "Septembre",
+            "end": "Décembre 2022",
+            "title": "Développeur full stack",
+            "company": "Flo",
+            "url": "https://flo.ca",
+            "subtitle": "Co-op",
+            "description": "Conception d'outils permettant de monitorer en temps réel l'état des réseaux nord américains de bornes de recharge pour véhicules électriques. Utilisation des outils pour migrer les serveurs d'une technologie vers une autre sans causer de panne."
+        },
+        "tags": [
+            "TypeScript",
+            "React",
+            "C#",
+            "ASP.NET",
+            "IoT"
+        ]
+    },
+    "cleio": {
+        "en": {
+            "start": "May",
+            "end": "November 2021",
+            "title": "Software developer",
+            "company": "CLEIO",
+            "url": "https://cleio.com",
+            "subtitle": "Co-op",
+            "description": "Upgraded a home IoT device by adding support for BLE and a control application. Developed an admin portal for school boards. Performed QA (manual and automatic) on medical eye software."
+        },
+        "fr": {
+            "start": "Mai",
+            "end": "Novembre 2021",
+            "title": "Développeur logiciel",
+            "company": "CLEIO",
+            "url": "https://cleio.com",
+            "subtitle": "Co-op",
+            "description": "Amélioration de l'intégration d'un appareil ménager IoT utilisant le BLE. Création d'un portail d'administration pour les commissions scolaires. QA complet (automatique et manuel) d'une application de médécine de la vue."
+        },
+        "tags": [
+            "TypeScript",
+            "React",
+            "React Native",
+            "Angular",
+            "HTML/CSS",
+            "IoT"
+        ]
+    },
+    "agc": {
+        "en": {
+            "start": "September 2019",
+            "end": "July 2020",
+            "title": "AR developer",
+            "company": "Auger Groupe Conseil",
+            "url": "https://augergroupe.com/",
+            "subtitle": "",
+            "description": "R&D using Microsoft's <a href=\"https://learn.microsoft.com/en-us/hololens/\"><i>HoloLens</i></a>. Designed a shared virtual 3D environment for AR and VR. Evaluated the technological possibilities using AR and VR for medical applications."
+        },
+        "fr": {
+            "start": "Septembre 2019",
+            "end": "Juillet 2020",
+            "title": "Développeur AR",
+            "company": "Auger Groupe Conseil",
+            "url": "https://augergroupe.com/",
+            "subtitle": "",
+            "description": "R&D utilisant la <a href=\"https://learn.microsoft.com/en-us/hololens/\"><i>HoloLens</i></a> de Microsoft. Conception d'un environnement virtuel partagé en 3D pour AR et VR. Évaluation des possibilités technologiques AR et VR pour des utilisations médicales."
+        },
+        "tags": [
+            "Unity",
+            "C#",
+            "HoloLens",
+            "R&D",
+            "AR/VR"
+        ]
+    }
+}
