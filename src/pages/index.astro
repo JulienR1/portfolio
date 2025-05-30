@@ -2,6 +2,7 @@
 import { translate, type Language } from "../i18n";
 import Layout from "../components/Layout.astro";
 import Aside from "../components/Aside.astro";
+import About from "../components/About.astro";
 import ExperienceCard from "../components/ExperienceCard.astro";
 import experience from "../resources/experience.json";
 
@@ -52,6 +53,7 @@ const t = translate(keys, Astro.currentLocale);
     <main>
         <section id="about">
             <h2>{t("sections.about")}</h2>
+            <About />
         </section>
 
         <section id="experience">

@@ -1,0 +1,208 @@
+---
+import { translate } from "../i18n";
+import Close from "../logos/Close.astro";
+
+const t = translate(
+    {
+        en: {
+            fallback: {
+                context: "Could not load video file.",
+                cta: "Open in another window",
+            },
+        },
+        fr: {
+            fallback: {
+                context: "Impossible de charger la vidéo.",
+                cta: "Ouvrir dans une autre fenêtre",
+            },
+        },
+    },
+    Astro.currentLocale,
+);
+---
+
+{
+    Astro.currentLocale === "en" ? (
+        <>
+            <p>who am i?</p>
+
+            <p>what do i do?</p>
+
+            <p>
+                In my free time, I usually work on yet another{" "}
+                <a href="#projects">side project</a>, find random hobbies or I
+                go out and try to move a bit. Recently, I have been{" "}
+                <button class="showcase" data-context="backcountry">
+                    backcountry skiing
+                </button>{" "}
+                when there is snow,{" "}
+                <button class="showcase" data-context="climbing">
+                    rock climbing
+                </button>
+                when there is none and training with{" "}
+                <button class="showcase" data-context="aerial">
+                    aerial straps
+                </button>{" "}
+                all year round.
+            </p>
+        </>
+    ) : (
+        <>french</>
+    )
+}
+
+<div id="showcase-modal" data-visible="false">
+    <div class="backdrop"></div>
+    <div class="content">
+        <button class="close">
+            <Close />
+        </button>
+
+        <img id="climbing" src="/climbing.jpg" />
+
+        <video id="backcountry" controls muted loop>
+            <source src="/backcountry.mp4" type="video/mp4" />
+            <span>
+                {t("fallback.context")}
+                <a href="/backcountry.mp4" target="_blank">
+                    {t("fallback.cta")}
+                </a>
+            </span>
+        </video>
+
+        <video id="aerial" controls muted loop>
+            <source src="/aerial-straps.mp4" type="video/mp4" />
+            <span>
+                {t("fallback.context")}
+                <a href="/aerial-straps.mp4" target="_blank">
+                    {t("fallback.cta")}
+                </a>
+            </span>
+        </video>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("showcase-modal")!;
+    const content = modal.querySelector(".content")!;
+    const x = modal.querySelector(".close")!;
+    const videos = [...modal.querySelectorAll("video")];
+
+    const close = () => {
+        document.body.dataset.noScroll = "false";
+        modal.dataset.visible = "false";
+        for (const video of videos) {
+            video.pause();
+        }
+    };
+
+    content.addEventListener("click", (e) => e.stopPropagation());
+
+    x.addEventListener("click", close);
+    modal.addEventListener("click", close);
+    document.addEventListener("keyup", function (e) {
+        if (e.key === "Escape") {
+            close();
+        }
+    });
+
+    const triggers =
+        document.querySelectorAll<HTMLButtonElement>("button.showcase");
+    triggers.forEach((trigger) =>
+        trigger.addEventListener("click", function () {
+            modal.dataset.context = trigger.dataset.context;
+            document.body.dataset.noScroll = "true";
+            modal.dataset.visible = "true";
+
+            const video = videos.find(({ id }) => id === modal.dataset.context);
+            if (video) {
+                video.currentTime = 0;
+                video.play();
+            }
+        }),
+    );
+</script>
+
+<style lang="scss">
+    p {
+        color: #7a7a7a;
+        line-height: 1.35em;
+
+        button {
+            font-weight: 600;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    #showcase-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: all 200ms ease;
+
+        &[data-visible="true"] {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+        }
+
+        .backdrop {
+            background: black;
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+        }
+
+        .content {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0.5em;
+            background: white;
+            border-radius: 0.5em;
+            max-width: 90vw;
+            overflow: hidden;
+
+            .close {
+                position: absolute;
+                top: 1em;
+                right: 1em;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                color: white;
+                z-index: 10;
+            }
+
+            img,
+            video {
+                display: none;
+                width: 100%;
+                width: -moz-available;
+                width: -webkit-fill-available;
+                width: stretch;
+                max-height: 90vh;
+            }
+        }
+
+        &[data-context="backcountry"] #backcountry,
+        &[data-context="climbing"] #climbing,
+        &[data-context="aerial"] #aerial {
+            display: block;
+        }
+    }
+
+    @media (min-width: 50rem) {
+        #showcase-modal .content {
+            top: 50%;
+            max-width: 70vw;
+        }
+    }
+</style>

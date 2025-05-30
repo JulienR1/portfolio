@@ -47,14 +47,6 @@ const title = [Astro.props.title, "Julien Rousseau"]
         font-family: noto, sans-serif;
     }
 
-    h1,
-    h2,
-    h3,
-    p,
-    span {
-        color: #303030;
-    }
-
     html,
     body {
         min-height: calc(100vh - 3em);
@@ -68,6 +60,27 @@ const title = [Astro.props.title, "Julien Rousseau"]
         padding: 1.5em;
         max-width: 27rem;
         margin: 0 auto;
+
+        &[data-no-scroll="true"] {
+            overflow-y: hidden;
+            max-height: 100vh;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    span,
+    button {
+        color: #303030;
+    }
+
+    button {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
     }
 
     @media (min-width: 50rem) {
