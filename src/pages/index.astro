@@ -13,7 +13,7 @@ const companies = [
     "agc",
 ] satisfies (keyof typeof experience)[];
 
-function companyResources<L extends Language>(language: L) {
+function parseExperience<L extends Language>(language: L) {
     const result = {} as Record<
         (typeof companies)[number],
         (typeof experience)[(typeof companies)[number]][L]
@@ -31,7 +31,7 @@ const keys = {
             experience: "Experience",
             projects: "Projects",
         },
-        experience: companyResources("en"),
+        experience: parseExperience("en"),
     },
     fr: {
         sections: {
@@ -39,7 +39,7 @@ const keys = {
             experience: "Expérience",
             projects: "Projets",
         },
-        experience: companyResources("fr"),
+        experience: parseExperience("fr"),
     },
 };
 
