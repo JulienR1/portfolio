@@ -1,0 +1,103 @@
+---
+const astro = "https://astro.build";
+const pages = "https://pages.github.com/";
+const project = "https://github.com/JulienR1/portfolio/";
+
+const noto = "https://fonts.google.com/noto";
+const license = "/noto-sans-license.txt";
+const icons = "https://fonts.google.com/icons";
+const fonts = "https://fonts.google.com";
+---
+
+<footer>
+    <p>
+        {
+            Astro.currentLocale === "en" ? (
+                <>
+                    <span>
+                        Made with <a href={astro}>Astro</a> and deployed to
+                        <a href={pages}>GitHub&nbsp;Pages</a> as a static
+                        website. This portfolio project is available{" "}
+                        <a href={project}>here</a>.
+                    </span>
+
+                    <span>
+                        <a href={noto}>Noto</a> font
+                        {
+                            <>
+                                (<a href={license}>license</a>)
+                            </>
+                        }
+                        and <a href={icons}>icons</a> by{" "}
+                        <a href={fonts}>Google&nbsp;Fonts</a>.
+                    </span>
+                </>
+            ) : (
+                <>
+                    <span>
+                        Développé avec <a href={astro}>Astro</a> et publié sur{" "}
+                        <a href={pages}>GitHub&nbsp;Pages</a> en tant que site
+                        web statique. Ce projet est disponible{" "}
+                        <a href={project}>ici</a>.
+                    </span>
+
+                    <span>
+                        La police <a href={noto}>Noto</a>
+                        {
+                            <>
+                                (<a href={license}>licence</a>)
+                            </>
+                        }
+                        et les <a href={icons}>icônes</a> par{" "}
+                        <a href={fonts}>Google&nbsp;Fonts</a>.
+                    </span>
+                </>
+            )
+        }
+    </p>
+
+    <p id="copy">
+        &copy; Julien Rousseau {new Date().getFullYear()}
+    </p>
+</footer>
+
+<style lang="scss">
+    footer {
+        font-size: 0.9em;
+        line-height: 1.3em;
+
+        p {
+            margin: 0;
+            padding-bottom: 0.5em;
+        }
+
+        span,
+        a {
+            color: #7a7a7a;
+        }
+
+        a {
+            font-weight: 600;
+            text-decoration: underline;
+            transition: all ease 200ms;
+
+            &:hover,
+            &:focus,
+            &:focus-within {
+                color: #303030;
+            }
+        }
+
+        #copy {
+            font-weight: 600;
+            color: #7a7a7a;
+        }
+    }
+
+    @media (min-width: 50rem) {
+        footer {
+            grid-column: 2;
+            grid-row: 2;
+        }
+    }
+</style>

@@ -3,6 +3,7 @@ import { translate, type Language } from "../i18n";
 import Layout from "../components/Layout.astro";
 import Aside from "../components/Aside.astro";
 import About from "../components/About.astro";
+import Footer from "../components/Footer.astro";
 import ExperienceCard from "../components/ExperienceCard.astro";
 import experience from "../resources/experience.json";
 
@@ -87,12 +88,15 @@ const t = translate(keys, Astro.currentLocale);
             <h2>{t("sections.projects")}</h2>
         </section>
     </main>
+
+    <Footer />
 </Layout>
 
 <style lang="scss">
     main {
         display: grid;
         gap: 2em;
+        padding-bottom: 5em;
     }
 
     section {
@@ -121,13 +125,13 @@ const t = translate(keys, Astro.currentLocale);
         }
 
         main {
-            padding: 3em 0;
+            padding-top: 3em;
         }
     }
 
     @media (min-width: 56rem) {
         body {
-            gap: 5rem;
+            gap: 0 5rem;
         }
     }
 </style>
