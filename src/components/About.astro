@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { translate } from "../i18n";
 import Close from "../logos/Close.astro";
 
@@ -39,8 +40,8 @@ const t = translate(
                 users. Some of these projects led to contributions to various
                 OSS projects within different organizations. Most of my
                 profesionnal endeavors targeted the web (or mobile) space but I
-                did get to work on some embedded solutions. <a href="#">SAUM</a> is a great
-                example of this.
+                did get to work on some embedded solutions.{" "}
+                <a href="projects/saum">SAUM</a> is a great example of this.
             </p>
 
             <p>
@@ -81,7 +82,8 @@ const t = translate(
                 publiques OSS au sein de différentes organisations. La majorité
                 de mes efforts professionnels visaient l'espace du web (et
                 mobile) mais j'ai aussi pu travailler sur des solutions
-                embarquées. <a href="#">SAUM</a> en est un bon exemple.
+                embarquées. <a href="projects/saum">SAUM</a> en est un bon
+                exemple.
             </p>
 
             <p>
