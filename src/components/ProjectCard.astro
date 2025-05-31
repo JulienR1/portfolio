@@ -1,5 +1,6 @@
 ---
 import Link from "../logos/Link.astro";
+import FollowArrow from "../logos/FollowArrow.astro";
 
 interface Props {
     id: string;
@@ -23,7 +24,12 @@ const { id, title, subtitle, img, tags, showcases } = Astro.props;
     <div>
         <div>
             <div class="title">
-                <span>{title}</span>
+                <div>
+                    <span>{title}</span>
+                    <span class="follow-arrow">
+                        <FollowArrow />
+                    </span>
+                </div>
                 {subtitle && <span class="subtitle">{subtitle}</span>}
             </div>
 
@@ -83,6 +89,7 @@ const { id, title, subtitle, img, tags, showcases } = Astro.props;
         > div {
             display: grid;
             grid-template-rows: repeat(2, auto);
+            pointer-events: none;
         }
 
         .img-container {
@@ -104,12 +111,24 @@ const { id, title, subtitle, img, tags, showcases } = Astro.props;
                 display: block;
             }
 
+            > div {
+                display: flex;
+                align-items: center;
+                gap: 0.25em;
+            }
+
             .subtitle {
                 font-weight: 400;
                 font-size: 0.9em;
                 padding: 0;
                 padding-top: 0.25em;
                 color: #7a7a7a;
+            }
+
+            .follow-arrow {
+                width: 1.2em;
+                height: 1.2em;
+                transition: all ease 200ms;
             }
         }
 
@@ -132,6 +151,7 @@ const { id, title, subtitle, img, tags, showcases } = Astro.props;
                 gap: 0.5em;
                 position: relative;
                 z-index: 10;
+                pointer-events: all;
 
                 span {
                     color: #7a7a7a;
@@ -201,6 +221,10 @@ const { id, title, subtitle, img, tags, showcases } = Astro.props;
                     box-shadow:
                         0 4px 6px -1px rgb(0 0 0 / 0.1),
                         0 2px 4px -2px rgb(0 0 0 / 0.1);
+                }
+
+                .follow-arrow {
+                    transform: translate(0.15em, -0.15em);
                 }
             }
 
