@@ -1,0 +1,223 @@
+---
+import Link from "../logos/Link.astro";
+
+interface Props {
+    id: string;
+    title: string;
+    subtitle?: string;
+    img: string;
+    tags: string[];
+    showcases?: Array<{
+        url: string;
+        cta: string;
+    }>;
+    children: any;
+}
+
+const { id, title, subtitle, img, tags, showcases } = Astro.props;
+---
+
+<li class="project">
+    <a href={"projects/" + id}></a>
+
+    <div>
+        <div>
+            <div class="title">
+                <span>{title}</span>
+                {subtitle && <span class="subtitle">{subtitle}</span>}
+            </div>
+
+            <div class="desc">
+                <slot />
+            </div>
+
+            {
+                (showcases ?? []).length > 0 && (
+                    <ul class="showcases">
+                        {showcases!.map((showcase) => (
+                            <li>
+                                <a href={showcase.url} target="_blank">
+                                    <span>
+                                        <Link />
+                                    </span>
+                                    <span>{showcase.cta}</span>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                )
+            }
+
+            {
+                tags.length > 0 && (
+                    <ul class="tags">
+                        {tags.map((tag) => (
+                            <li>{tag}</li>
+                        ))}
+                    </ul>
+                )
+            }
+        </div>
+
+        <div class="img-container">
+            <img src={img} alt={title} />
+        </div>
+    </div>
+</li>
+
+<style lang="scss">
+    .project {
+        display: block;
+        position: relative;
+        padding: 1em 0;
+
+        > a {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        > div {
+            display: grid;
+            grid-template-rows: repeat(2, auto);
+        }
+
+        .img-container {
+            overflow: hidden;
+            max-width: 60vw;
+            padding-top: 1.5em;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .title {
+            font-size: 1.1em;
+            font-weight: 600;
+            padding-bottom: 0.75em;
+
+            span {
+                display: block;
+            }
+
+            .subtitle {
+                font-weight: 400;
+                font-size: 0.9em;
+                padding: 0;
+                padding-top: 0.25em;
+                color: #7a7a7a;
+            }
+        }
+
+        .desc {
+            color: #7a7a7a;
+            line-height: 1.25em;
+            font-size: 0.9em;
+        }
+
+        .showcases {
+            padding: 0;
+            padding-top: 1em;
+            list-style: none;
+
+            a {
+                display: flex;
+                color: #7a7a7a;
+                text-decoration: none;
+                align-items: center;
+                gap: 0.5em;
+                position: relative;
+                z-index: 10;
+
+                span {
+                    color: #7a7a7a;
+                    transition: all ease 200ms;
+                }
+            }
+
+            li {
+                width: fit-content;
+
+                &:hover,
+                &:focus,
+                &:focus-within {
+                    a span {
+                        color: #303030;
+                    }
+                }
+
+                span {
+                    display: block;
+
+                    &:first-of-type {
+                        width: 1.5em;
+                        height: 1.5em;
+                    }
+                }
+            }
+        }
+
+        .tags {
+            list-style-type: none;
+            font-size: 0.7em;
+            font-weight: 400;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            padding-top: 1.5em;
+            gap: 0.5em;
+
+            li {
+                padding: 0.4em 0.8em;
+                border-radius: 10000px;
+                border: 1px solid #7a7a7a;
+                color: #7a7a7a;
+            }
+        }
+    }
+
+    @media (min-width: 50rem) {
+        .project {
+            margin: 1em 0;
+
+            > a {
+                --cheat: 1em;
+                width: calc(100% + 2 * var(--cheat));
+                transform: translateX(calc(-1 * var(--cheat)));
+                border-radius: 0.5em;
+                transition: all ease 200ms;
+                border: 1px solid transparent;
+            }
+
+            &:hover,
+            &:focus,
+            &:focus-within {
+                > a {
+                    border: 1px solid rgb(0 0 0 / 0.1);
+                    box-shadow:
+                        0 4px 6px -1px rgb(0 0 0 / 0.1),
+                        0 2px 4px -2px rgb(0 0 0 / 0.1);
+                }
+            }
+
+            > div {
+                display: grid;
+                grid-template-rows: none;
+                grid-template-columns: 10em auto;
+                gap: 1em;
+
+                > :last-child {
+                    order: -1;
+                }
+
+                .img-container {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+</style>
