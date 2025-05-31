@@ -1,6 +1,7 @@
 ---
 import Link from "../logos/Link.astro";
 import FollowArrow from "../logos/FollowArrow.astro";
+import { translate } from "../i18n";
 
 interface Props {
     id: string;
@@ -16,10 +17,18 @@ interface Props {
 }
 
 const { id, title, subtitle, img, tags, showcases } = Astro.props;
+
+const t = translate(
+    {
+        en: { link: "More details on " + title },
+        fr: { link: "Plus de détails sur" + title },
+    },
+    Astro.currentLocale,
+);
 ---
 
 <li class="project">
-    <a href={"projects/" + id}></a>
+    <a href={"projects/" + id} title={t("link")} aria-label={t("link")}></a>
 
     <div>
         <div>

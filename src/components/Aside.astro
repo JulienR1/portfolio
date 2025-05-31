@@ -20,6 +20,9 @@ const keys = {
             experience: "Experience",
             projects: "Projects",
         },
+        github: "GitHub link",
+        linkedIn: "LinkedIn link",
+        email: "Email link",
     },
     fr: {
         cpi: {
@@ -35,6 +38,9 @@ const keys = {
             experience: "Expérience",
             projects: "Projets",
         },
+        github: "Lien vers GitHub",
+        linkedIn: "Lien vers LinkedIn",
+        email: "Lien pour envoyer un courriel",
     },
 };
 
@@ -72,18 +78,28 @@ const t = translate(keys, Astro.currentLocale);
 
     <ul>
         <li>
-            <a href="https://github.com/julienR1/">
+            <a
+                href="https://github.com/julienR1/"
+                aria-label={t("github")}
+                title={t("github")}
+            >
                 <Github />
             </a>
         </li>
         <li>
             <a
                 href="https://www.linkedin.com/in/julien-rousseau-cpi-402475179/"
+                aria-label={t("linkedIn")}
+                title={t("linkedIn")}
             >
                 <LinkedIn />
             </a>
             <li>
-                <a href="mailto:julienrous16@gmail.com">
+                <a
+                    href="mailto:julienrous16@gmail.com"
+                    aria-label={t("email")}
+                    title={t("email")}
+                >
                     <Mail />
                 </a>
             </li>

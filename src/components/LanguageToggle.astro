@@ -9,7 +9,10 @@ interface Props {
 }
 
 const t = translate(
-    { en: { translate: "Français" }, fr: { translate: "English" } },
+    {
+        en: { translate: "Français", toggle: "Consulter en français" },
+        fr: { translate: "English", toggle: "Read in English" },
+    },
     Astro.currentLocale,
 );
 ---
@@ -19,6 +22,7 @@ const t = translate(
     style={Astro.props.style}
     title={t("translate")}
     href={getRelativeLocaleUrl(Astro.currentLocale === "en" ? "fr" : "en")}
+    aria-label={t("toggle")}
 >
     <Language style={{ color: "#303030" }} />
 </a>
