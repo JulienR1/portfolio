@@ -28,6 +28,14 @@ const title = [Astro.props.title, "Julien Rousseau"]
     </body>
 </html>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        for (const loader of window.loaders ?? []) {
+            loader();
+        }
+    });
+</script>
+
 <style is:global>
     @font-face {
         font-family: "noto";

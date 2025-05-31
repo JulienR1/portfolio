@@ -15,10 +15,65 @@ const t = translate(
 ---
 
 <a
-    class={Astro.props.className}
+    class:list={["translator", Astro.props.className]}
     style={Astro.props.style}
     title={t("translate")}
     href={getRelativeLocaleUrl(Astro.currentLocale === "en" ? "fr" : "en")}
 >
     <Language style={{ color: "#303030" }} />
 </a>
+
+<script>
+    import type { Language } from "../i18n";
+
+    const parser = new DOMParser();
+
+    // Change the body at runtime and reload every JS function instead of loading a new page.
+    // This allows for less jitter when changing language by navigating to the correct url.
+    async function loadLanguage(lang: Language, fallbackUrl: string) {
+        try {
+            const url = new URL(location.toString());
+            if (lang === "en" && url.pathname.startsWith("/fr")) {
+                url.pathname = url.pathname.replace("/fr", "");
+            } else if (lang === "fr") {
+                url.pathname = "/fr" + url.pathname;
+            }
+
+            if (url.toString() === location.toString()) {
+                return;
+            }
+
+            const response = await fetch(url);
+            const html = await response.text();
+            const page = parser.parseFromString(html, "text/html");
+            const body = page.querySelector("body");
+            if (!body) {
+                throw new Error("could not find body in translated page");
+            }
+
+            document.body = body;
+            document.documentElement.lang = lang;
+            history.pushState({}, "", url);
+            for (const loader of window.loaders ?? []) {
+                loader();
+            }
+        } catch {
+            location.assign(fallbackUrl);
+        }
+    }
+
+    function registerTranslator(translator: HTMLAnchorElement) {
+        translator.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.documentElement.lang === "en" ? "fr" : "en";
+            loadLanguage(target, translator.href);
+        });
+    }
+
+    window.loaders ??= [];
+    window.loaders.push(function () {
+        document
+            .querySelectorAll<HTMLAnchorElement>("a.translator")
+            .forEach(registerTranslator);
+    });
+</script>

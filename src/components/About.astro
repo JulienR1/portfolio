@@ -138,44 +138,49 @@ const t = translate(
 </div>
 
 <script>
-    const modal = document.getElementById("showcase-modal")!;
-    const content = modal.querySelector(".content")!;
-    const x = modal.querySelector(".close")!;
-    const videos = [...modal.querySelectorAll("video")];
+    window.loaders ??= [];
+    window.loaders.push(function () {
+        const modal = document.getElementById("showcase-modal")!;
+        const content = modal.querySelector(".content")!;
+        const x = modal.querySelector(".close")!;
+        const videos = [...modal.querySelectorAll("video")];
 
-    const close = () => {
-        document.body.dataset.noScroll = "false";
-        modal.dataset.visible = "false";
-        for (const video of videos) {
-            video.pause();
-        }
-    };
-
-    content.addEventListener("click", (e) => e.stopPropagation());
-
-    x.addEventListener("click", close);
-    modal.addEventListener("click", close);
-    document.addEventListener("keyup", function (e) {
-        if (e.key === "Escape") {
-            close();
-        }
-    });
-
-    const triggers =
-        document.querySelectorAll<HTMLButtonElement>("button.showcase");
-    triggers.forEach((trigger) =>
-        trigger.addEventListener("click", function () {
-            modal.dataset.context = trigger.dataset.context;
-            document.body.dataset.noScroll = "true";
-            modal.dataset.visible = "true";
-
-            const video = videos.find(({ id }) => id === modal.dataset.context);
-            if (video) {
-                video.currentTime = 0;
-                video.play();
+        const close = () => {
+            document.body.dataset.noScroll = "false";
+            modal.dataset.visible = "false";
+            for (const video of videos) {
+                video.pause();
             }
-        }),
-    );
+        };
+
+        content.addEventListener("click", (e) => e.stopPropagation());
+
+        x.addEventListener("click", close);
+        modal.addEventListener("click", close);
+        document.addEventListener("keyup", function (e) {
+            if (e.key === "Escape") {
+                close();
+            }
+        });
+
+        const triggers =
+            document.querySelectorAll<HTMLButtonElement>("button.showcase");
+        triggers.forEach((trigger) =>
+            trigger.addEventListener("click", function () {
+                modal.dataset.context = trigger.dataset.context;
+                document.body.dataset.noScroll = "true";
+                modal.dataset.visible = "true";
+
+                const video = videos.find(
+                    ({ id }) => id === modal.dataset.context,
+                );
+                if (video) {
+                    video.currentTime = 0;
+                    video.play();
+                }
+            }),
+        );
+    });
 </script>
 
 <style lang="scss">

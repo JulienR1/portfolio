@@ -100,38 +100,41 @@ const t = translate(keys, Astro.currentLocale);
         "IntersectionObserverEntry" in window &&
         "intersectionRatio" in window.IntersectionObserverEntry.prototype
     ) {
-        const linkIds = ["about", "experience", "projects"];
-        const links = linkIds.reduce(
-            (acc, linkId) => ({
-                ...acc,
-                [linkId]: {
-                    element: document.getElementById(`link-${linkId}`)!,
-                    intersecting: true,
-                },
-            }),
-            {} as Record<
-                string,
-                { element: HTMLElement; intersecting: boolean }
-            >,
-        );
+        window.loaders ??= [];
+        window.loaders.push(function () {
+            const linkIds = ["about", "experience", "projects"];
+            const links = linkIds.reduce(
+                (acc, linkId) => ({
+                    ...acc,
+                    [linkId]: {
+                        element: document.getElementById(`link-${linkId}`)!,
+                        intersecting: true,
+                    },
+                }),
+                {} as Record<
+                    string,
+                    { element: HTMLElement; intersecting: boolean }
+                >,
+            );
 
-        const observer = new IntersectionObserver(([entry]) => {
-            links[entry.target.id].intersecting = entry.isIntersecting;
+            const observer = new IntersectionObserver(([entry]) => {
+                links[entry.target.id].intersecting = entry.isIntersecting;
 
-            let found = false;
-            for (const link of Object.values(links)) {
-                const selected = found === false && link.intersecting;
-                link.element.dataset.selected = selected.toString();
-                found ||= link.intersecting;
-            }
+                let found = false;
+                for (const link of Object.values(links)) {
+                    const selected = found === false && link.intersecting;
+                    link.element.dataset.selected = selected.toString();
+                    found ||= link.intersecting;
+                }
 
-            if (!found) {
-                links[linkIds.at(-1)!].element.dataset.selected = "true";
-            }
+                if (!found) {
+                    links[linkIds.at(-1)!].element.dataset.selected = "true";
+                }
+            });
+            document
+                .querySelectorAll("main section")
+                .forEach((section) => observer.observe(section));
         });
-        document
-            .querySelectorAll("main section")
-            .forEach((section) => observer.observe(section));
     }
 </script>
 
