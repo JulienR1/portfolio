@@ -62,6 +62,10 @@ const t = translate(
                     </ul>
                 )
             }
+        </div>
+
+        <div class="img-container">
+            <img src={img} alt={title} />
 
             {
                 tags.length > 0 && (
@@ -72,10 +76,6 @@ const t = translate(
                     </ul>
                 )
             }
-        </div>
-
-        <div class="img-container">
-            <img src={img} alt={title} />
         </div>
     </div>
 </li>
@@ -102,9 +102,11 @@ const t = translate(
         }
 
         .img-container {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 1.5em;
             overflow: hidden;
-            max-width: 60vw;
-            padding-top: 1.5em;
+            padding-top: 1em;
 
             img {
                 width: 100%;
@@ -197,7 +199,6 @@ const t = translate(
             display: flex;
             flex-wrap: wrap;
             padding: 0;
-            padding-top: 1.5em;
             gap: 0.5em;
 
             li {
@@ -249,6 +250,7 @@ const t = translate(
 
                 .img-container {
                     padding-top: 0;
+                    flex-direction: column;
                 }
             }
         }

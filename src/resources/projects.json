@@ -1,0 +1,43 @@
+{
+    "saum": {
+        "img": "/saum.png",
+        "en": {
+            "title": "SAUM",
+            "subtitle": "Universal and modular sensor station",
+            "description": "Built a independent and submersible physical station to monitor climat change in Canada's northern lakes. Associated with UdeS. Deployed at <strong>Churchill</strong> (North of Manitoba) in August 2024."
+        },
+        "fr": {
+            "title": "SAUM",
+            "subtitle": "Station Accueil Universelle Modulaire",
+            "description": "Construction d'une station physique indépendante et submersible pour monitorer le changement climatique dans les lacs nordiques du Canada. Associé avec l'UdeS. Déploiement effectué à <strong>Churchill</strong> (Nord du Manitoba) en août 2024."
+        },
+        "tags": [
+            "C",
+            "STM32",
+            "UART",
+            "R&D",
+            "Go",
+            "OpenAPI",
+            "TypeScript",
+            "React",
+            "TailwindCSS",
+            "CLI"
+        ],
+        "showcases": [
+            {
+                "url": "https://www.youtube.com/watch?v=PxVDL2o9Jzc",
+                "cta": {
+                    "en": "Watch presentation video (french)",
+                    "fr": "Visionner la vidéo de présentation"
+                }
+            },
+            {
+                "url": "https://padlet.com/PMC_UdeS/projets-majeurs-de-conception-2024-66e-promotion-8kzv9zijms0qfj1w/wish/pRxDZ4d2NABMZ183",
+                "cta": {
+                    "en": "Read project summary (french)",
+                    "fr": "Consulter le résumé du projet"
+                }
+            }
+        ]
+    }
+}

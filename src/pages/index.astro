@@ -5,7 +5,10 @@ import Aside from "../components/Aside.astro";
 import About from "../components/About.astro";
 import Footer from "../components/Footer.astro";
 import ExperienceCard from "../components/ExperienceCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
 import experience from "../resources/experience.json";
+import projects from "../resources/projects.json";
 
 const companies = [
     "agilean",
@@ -14,6 +17,8 @@ const companies = [
     "cleio",
     "agc",
 ] satisfies (keyof typeof experience)[];
+
+const projectIds = ["saum"] satisfies (keyof typeof projects)[];
 
 function parseExperience<L extends Language>(language: L) {
     const result = {} as Record<
@@ -26,6 +31,17 @@ function parseExperience<L extends Language>(language: L) {
     return result;
 }
 
+function parseProjects<L extends Language>(language: L) {
+    const result = {} as Record<
+        (typeof projectIds)[number],
+        (typeof projects)[(typeof projectIds)[number]][L]
+    >;
+    for (const projectId of projectIds) {
+        result[projectId] = projects[projectId][language];
+    }
+    return result;
+}
+
 const keys = {
     en: {
         sections: {
@@ -34,6 +50,7 @@ const keys = {
             projects: "Projects",
         },
         experience: parseExperience("en"),
+        projects: parseProjects("en"),
     },
     fr: {
         sections: {
@@ -42,6 +59,7 @@ const keys = {
             projects: "Projets",
         },
         experience: parseExperience("fr"),
+        projects: parseProjects("fr"),
     },
 };
 
@@ -86,6 +104,35 @@ const t = translate(keys, Astro.currentLocale);
 
         <section id="projects">
             <h2>{t("sections.projects")}</h2>
+
+            <ul>
+                {
+                    projectIds.map((projectId) => (
+                        <ProjectCard
+                            id={projectId}
+                            title={t(`projects.${projectId}.title`)}
+                            subtitle={t(`projects.${projectId}.subtitle`)}
+                            tags={projects[projectId].tags}
+                            img={projects[projectId].img}
+                            showcases={projects[projectId].showcases.map(
+                                (showcase) => ({
+                                    ...showcase,
+                                    cta: showcase.cta[
+                                        Astro.currentLocale! as Language
+                                    ],
+                                }),
+                            )}
+                        >
+                            {/* No XSS risks since everything is built locally once with local data. */}
+                            <Fragment
+                                set:html={t(
+                                    `projects.${projectId}.description`,
+                                )}
+                            />
+                        </ProjectCard>
+                    ))
+                }
+            </ul>
         </section>
     </main>
 
