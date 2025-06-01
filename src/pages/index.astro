@@ -7,6 +7,7 @@ import Footer from "../components/Footer.astro";
 import ExperienceCard from "../components/ExperienceCard.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import FollowArrow from "../logos/FollowArrow.astro";
+import { parseExperience, parseProjects } from "../parsers";
 
 import experience from "../resources/experience.json";
 import projects from "../resources/projects.json";
@@ -26,28 +27,6 @@ const projectIds = [
     "cribbage",
 ] satisfies (keyof typeof projects)[];
 
-function parseExperience<L extends Language>(language: L) {
-    const result = {} as Record<
-        (typeof companies)[number],
-        (typeof experience)[(typeof companies)[number]][L]
-    >;
-    for (const company of companies) {
-        result[company] = experience[company][language];
-    }
-    return result;
-}
-
-function parseProjects<L extends Language>(language: L) {
-    const result = {} as Record<
-        (typeof projectIds)[number],
-        (typeof projects)[(typeof projectIds)[number]][L]
-    >;
-    for (const projectId of projectIds) {
-        result[projectId] = projects[projectId][language];
-    }
-    return result;
-}
-
 const keys = {
     en: {
         sections: {
@@ -55,8 +34,11 @@ const keys = {
             experience: "Experience",
             projects: "Projects",
         },
-        experience: parseExperience("en"),
-        projects: { ...parseProjects("en"), registry: "View all projects" },
+        experience: parseExperience("en", experience),
+        projects: {
+            ...parseProjects("en", projects, projectIds),
+            registry: "View all projects",
+        },
     },
     fr: {
         sections: {
@@ -64,8 +46,11 @@ const keys = {
             experience: "Expérience",
             projects: "Projets",
         },
-        experience: parseExperience("fr"),
-        projects: { ...parseProjects("fr"), registry: "Voir tous les projets" },
+        experience: parseExperience("fr", experience),
+        projects: {
+            ...parseProjects("fr", projects, projectIds),
+            registry: "Voir tous les projets",
+        },
     },
 };
 

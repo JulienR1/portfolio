@@ -1,5 +1,44 @@
 ---
 import Layout from "../../components/Layout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { translate, type Language } from "../../i18n";
+import { parseProjects } from "../../parsers";
+
+import projects from "../../resources/projects.json";
+
+const projectIds = Object.keys(projects) as (keyof typeof projects)[];
+const t = translate(
+    {
+        en: { projects: parseProjects("en", projects) },
+        fr: { projects: parseProjects("fr", projects) },
+    },
+    Astro.currentLocale,
+);
 ---
 
-<Layout> Project registry, wip </Layout>
+<Layout>
+    <ul>
+        {
+            projectIds.map((projectId) => (
+                <ProjectCard
+                    id={projectId}
+                    title={t(`projects.${projectId}.title`)}
+                    subtitle={t(`projects.${projectId}.subtitle`)}
+                    tags={projects[projectId].tags}
+                    img={projects[projectId].img}
+                    showcases={projects[projectId].showcases.map(
+                        (showcase) => ({
+                            ...showcase,
+                            cta: showcase.cta[Astro.currentLocale! as Language],
+                        }),
+                    )}
+                >
+                    {/* No XSS risks since everything is built locally once with local data. */}
+                    <Fragment
+                        set:html={t(`projects.${projectId}.description`)}
+                    />
+                </ProjectCard>
+            ))
+        }
+    </ul>
+</Layout>
