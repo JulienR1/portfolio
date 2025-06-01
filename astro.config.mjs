@@ -16,6 +16,7 @@ export default defineConfig({
 
   build: {
     assets: "res",
+    format: "file",
   },
 
   vite: {

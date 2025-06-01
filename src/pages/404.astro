@@ -1,0 +1,51 @@
+---
+import Layout from "../components/Layout.astro";
+import { translate } from "../i18n";
+
+const t = translate(
+    {
+        en: {
+            content: "This page could not be found.",
+            url: "/",
+            cta: "Go back",
+        },
+        fr: {
+            content: "Impossible de trouver cette page.",
+            url: "/fr",
+            cta: "Retour",
+        },
+    },
+    Astro.currentLocale,
+);
+---
+
+<Layout>
+    <div>
+        <p>404</p>
+        <p>{t("content")}</p>
+        <a href={t("url")}>{t("cta")}</a>
+    </div>
+</Layout>
+
+<style>
+    div {
+        padding-top: 30vh;
+        text-align: center;
+    }
+
+    p {
+        font-weight: 600;
+        font-size: 1em;
+        margin: 0.25em;
+    }
+
+    p:first-of-type {
+        font-size: 1.5em;
+    }
+
+    a {
+        text-decoration: underline;
+        font-weight: 400;
+        font-size: 1em;
+    }
+</style>
