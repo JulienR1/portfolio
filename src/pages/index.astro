@@ -19,7 +19,12 @@ const companies = [
     "agc",
 ] satisfies (keyof typeof experience)[];
 
-const projectIds = ["saum"] satisfies (keyof typeof projects)[];
+const projectIds = [
+    "saum",
+    "satisfactory",
+    "trampo",
+    "cribbage",
+] satisfies (keyof typeof projects)[];
 
 function parseExperience<L extends Language>(language: L) {
     const result = {} as Record<
