@@ -61,85 +61,89 @@ const t = translate(keys, Astro.currentLocale);
 <Layout>
     <Header />
 
-    <Aside />
+    <div id="content">
+        <Aside />
 
-    <main>
-        <section id="about">
-            <h2>{t("sections.about")}</h2>
-            <About />
-        </section>
+        <main>
+            <section id="about">
+                <h2>{t("sections.about")}</h2>
+                <About />
+            </section>
 
-        <section id="experience">
-            <h2>{t("sections.experience")}</h2>
+            <section id="experience">
+                <h2>{t("sections.experience")}</h2>
 
-            <ul>
-                {
-                    companies.map((company) => (
-                        <ExperienceCard
-                            start={t(`experience.${company}.start`)}
-                            end={t(`experience.${company}.end`)}
-                            title={t(`experience.${company}.title`)}
-                            company={t(`experience.${company}.company`)}
-                            url={t(`experience.${company}.url`)}
-                            subtitle={t(`experience.${company}.subtitle`)}
-                            tags={experience[company].tags}
-                        >
-                            {/* No XSS risks since everything is built locally once with local data. */}
-                            <Fragment
-                                set:html={t(
-                                    `experience.${company}.description`,
+                <ul>
+                    {
+                        companies.map((company) => (
+                            <ExperienceCard
+                                start={t(`experience.${company}.start`)}
+                                end={t(`experience.${company}.end`)}
+                                title={t(`experience.${company}.title`)}
+                                company={t(`experience.${company}.company`)}
+                                url={t(`experience.${company}.url`)}
+                                subtitle={t(`experience.${company}.subtitle`)}
+                                tags={experience[company].tags}
+                            >
+                                {/* No XSS risks since everything is built locally once with local data. */}
+                                <Fragment
+                                    set:html={t(
+                                        `experience.${company}.description`,
+                                    )}
+                                />
+                            </ExperienceCard>
+                        ))
+                    }
+                </ul>
+            </section>
+
+            <section id="projects">
+                <h2>{t("sections.projects")}</h2>
+
+                <ul>
+                    {
+                        projectIds.map((projectId) => (
+                            <ProjectCard
+                                id={projectId}
+                                title={t(`projects.${projectId}.title`)}
+                                subtitle={t(`projects.${projectId}.subtitle`)}
+                                tags={projects[projectId].tags}
+                                img={projects[projectId].img}
+                                showcases={projects[projectId].showcases.map(
+                                    (showcase) => ({
+                                        ...showcase,
+                                        cta: showcase.cta[
+                                            Astro.currentLocale! as Language
+                                        ],
+                                    }),
                                 )}
-                            />
-                        </ExperienceCard>
-                    ))
-                }
-            </ul>
-        </section>
+                            >
+                                {/* No XSS risks since everything is built locally once with local data. */}
+                                <Fragment
+                                    set:html={t(
+                                        `projects.${projectId}.description`,
+                                    )}
+                                />
+                            </ProjectCard>
+                        ))
+                    }
+                </ul>
 
-        <section id="projects">
-            <h2>{t("sections.projects")}</h2>
+                <a class="view-more" href="projects/">
+                    <span>
+                        {t("projects.registry")}
+                    </span>
+                    <span>
+                        <FollowArrow
+                            style={{ width: "1.5em", height: "1.5em" }}
+                        />
+                    </span>
+                </a>
+            </section>
+        </main>
 
-            <ul>
-                {
-                    projectIds.map((projectId) => (
-                        <ProjectCard
-                            id={projectId}
-                            title={t(`projects.${projectId}.title`)}
-                            subtitle={t(`projects.${projectId}.subtitle`)}
-                            tags={projects[projectId].tags}
-                            img={projects[projectId].img}
-                            showcases={projects[projectId].showcases.map(
-                                (showcase) => ({
-                                    ...showcase,
-                                    cta: showcase.cta[
-                                        Astro.currentLocale! as Language
-                                    ],
-                                }),
-                            )}
-                        >
-                            {/* No XSS risks since everything is built locally once with local data. */}
-                            <Fragment
-                                set:html={t(
-                                    `projects.${projectId}.description`,
-                                )}
-                            />
-                        </ProjectCard>
-                    ))
-                }
-            </ul>
-
-            <a class="view-more" href="projects/">
-                <span>
-                    {t("projects.registry")}
-                </span>
-                <span>
-                    <FollowArrow style={{ width: "1.5em", height: "1.5em" }} />
-                </span>
-            </a>
-        </section>
-    </main>
-
-    <Footer />
+        <Footer />
+    </div>
 </Layout>
 
 <style lang="scss">
@@ -194,7 +198,7 @@ const t = translate(keys, Astro.currentLocale);
     }
 
     @media (min-width: 50rem) {
-        body {
+        #content {
             display: grid;
             grid-template-columns: 22.5rem minmax(auto, 37.5rem);
             justify-content: space-around;
@@ -209,7 +213,7 @@ const t = translate(keys, Astro.currentLocale);
     }
 
     @media (min-width: 56rem) {
-        body {
+        #content {
             gap: 0 5rem;
         }
     }
