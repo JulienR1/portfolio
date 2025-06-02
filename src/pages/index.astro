@@ -11,6 +11,7 @@ import { parseExperience, parseProjects } from "../parsers";
 
 import experience from "../resources/experience.json";
 import projects from "../resources/projects.json";
+import Header from "../components/Header.astro";
 
 const companies = [
     "agilean",
@@ -58,6 +59,8 @@ const t = translate(keys, Astro.currentLocale);
 ---
 
 <Layout>
+    <Header />
+
     <Aside />
 
     <main>

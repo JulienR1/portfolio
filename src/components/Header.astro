@@ -1,30 +1,126 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { translate, type Language } from "../i18n";
 import LanguageToggle from "./LanguageToggle.astro";
+import Chevron from "../logos/Chevron.astro";
+
+interface Props {
+    title?: string;
+    navigation?: boolean;
+}
+
+const keys = {
+    en: {
+        "": "Home",
+        projects: "Projects",
+    },
+    fr: {
+        "": "Accueil",
+        projects: "Projets",
+    },
+};
+
+const t = translate(keys, Astro.currentLocale);
+
+const { title = "", navigation = false } = Astro.props;
+const route = Astro.url.pathname.replace(/\/$/, "").split("/") as Array<
+    keyof (typeof keys)[Language]
+>;
 ---
 
 <header>
-    <LanguageToggle style={{ width: "24px", height: "24px" }} />
+    {
+        navigation && (
+            <nav>
+                {route.map((page, i) => (
+                    <>
+                        <span class:list={{ current: route.length === i + 1 }}>
+                            <a
+                                href={getRelativeLocaleUrl(
+                                    Astro.currentLocale ?? "en",
+                                    route.slice(0, i + 1).join("/"),
+                                )}
+                            >
+                                {t(page)}
+                            </a>
+                        </span>
+                        {i + 1 < route.length && (
+                            <span class="chevron">
+                                <Chevron />
+                            </span>
+                        )}
+                    </>
+                ))}
+            </nav>
+        )
+    }
+
+    {title.length > 0 && <h1>{title}</h1>}
+
+    <div id="header-language">
+        <LanguageToggle
+            style={{ display: "block", width: "24px", height: "24px" }}
+        />
+    </div>
 </header>
 
 <style>
     header {
-        position: fixed;
-        padding: 1.5em;
-        left: 0;
-        top: 0;
         width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        opacity: 0.7;
-        pointer-events: none;
+        position: relative;
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 0.25em;
+            font-size: 0.9em;
+            padding-top: 0.15em;
+
+            a,
+            span {
+                color: #7a7a7a;
+            }
+
+            span.current a {
+                font-weight: 600;
+                color: #303030;
+            }
+
+            .chevron {
+                --size: 18px;
+                width: var(--size);
+                height: var(--size);
+            }
+
+            .chevron:last-of-type {
+                --size: 24px;
+            }
+        }
+
+        nav + h1 {
+            padding-top: 1em;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 1.75em;
+            margin: 0;
+        }
 
         > * {
             pointer-events: all;
         }
+
+        #header-language {
+            position: fixed;
+            top: 1.5em;
+            right: 1.5em;
+            opacity: 0.7;
+        }
     }
 
     @media (min-width: 50em) {
-        header {
+        header #header-language {
             display: none;
         }
     }

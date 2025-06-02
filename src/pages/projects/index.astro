@@ -1,4 +1,5 @@
 ---
+import Header from "../../components/Header.astro";
 import Layout from "../../components/Layout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import { translate, type Language } from "../../i18n";
@@ -9,36 +10,79 @@ import projects from "../../resources/projects.json";
 const projectIds = Object.keys(projects) as (keyof typeof projects)[];
 const t = translate(
     {
-        en: { projects: parseProjects("en", projects) },
-        fr: { projects: parseProjects("fr", projects) },
+        en: {
+            page: "Projects",
+            title: "More projects",
+            projects: parseProjects("en", projects),
+        },
+        fr: {
+            page: "Projets",
+            title: "Plus de projets",
+            projects: parseProjects("fr", projects),
+        },
     },
     Astro.currentLocale,
 );
 ---
 
-<Layout>
-    <ul>
-        {
-            projectIds.map((projectId) => (
-                <ProjectCard
-                    id={projectId}
-                    title={t(`projects.${projectId}.title`)}
-                    subtitle={t(`projects.${projectId}.subtitle`)}
-                    tags={projects[projectId].tags}
-                    img={projects[projectId].img}
-                    showcases={projects[projectId].showcases.map(
-                        (showcase) => ({
-                            ...showcase,
-                            cta: showcase.cta[Astro.currentLocale! as Language],
-                        }),
-                    )}
-                >
-                    {/* No XSS risks since everything is built locally once with local data. */}
-                    <Fragment
-                        set:html={t(`projects.${projectId}.description`)}
-                    />
-                </ProjectCard>
-            ))
-        }
-    </ul>
+<Layout title={t("page")}>
+    <main>
+        <Header title={t("title")} navigation />
+
+        <ul>
+            {
+                projectIds.map((projectId) => (
+                    <ProjectCard
+                        id={projectId}
+                        title={t(`projects.${projectId}.title`)}
+                        subtitle={t(`projects.${projectId}.subtitle`)}
+                        tags={projects[projectId].tags}
+                        img={projects[projectId].img}
+                        showcases={projects[projectId].showcases.map(
+                            (showcase) => ({
+                                ...showcase,
+                                cta: showcase.cta[
+                                    Astro.currentLocale! as Language
+                                ],
+                            }),
+                        )}
+                    >
+                        {/* No XSS risks since everything is built locally once with local data. */}
+                        <Fragment
+                            set:html={t(`projects.${projectId}.description`)}
+                        />
+                    </ProjectCard>
+                ))
+            }
+        </ul>
+    </main>
 </Layout>
+
+<style lang="scss">
+    main {
+        margin: 0 auto;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    @media (min-width: 50rem) {
+        main {
+            max-width: 40rem;
+        }
+    }
+
+    @media (min-width: 65rem) {
+        main {
+            max-width: 85rem;
+            padding: 1em 5em;
+        }
+
+        ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 2.5em;
+        }
+    }
+</style>

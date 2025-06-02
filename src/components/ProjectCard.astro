@@ -2,6 +2,7 @@
 import Link from "../logos/Link.astro";
 import FollowArrow from "../logos/FollowArrow.astro";
 import { translate } from "../i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 interface Props {
     id: string;
@@ -27,8 +28,14 @@ const t = translate(
 );
 ---
 
-<li class="project">
-    <a href={"projects/" + id} title={t("link")} aria-label={t("link")}></a>
+<li class="project" id={id}>
+    <a
+        href={getRelativeLocaleUrl(
+            Astro.currentLocale ?? "en",
+            "projects/" + id,
+        )}
+        title={t("link")}
+        aria-label={t("link")}></a>
 
     <div>
         <div>
