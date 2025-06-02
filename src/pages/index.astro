@@ -197,12 +197,23 @@ const t = translate(keys, Astro.currentLocale);
         }
     }
 
+    @media (min-width: 40rem) {
+        body {
+            max-width: 35rem;
+            padding: 1.5em 3em;
+        }
+    }
+
     @media (min-width: 50rem) {
+        body {
+            max-width: none;
+        }
+
         #content {
             display: grid;
             grid-template-columns: 22.5rem minmax(auto, 37.5rem);
-            justify-content: space-around;
             max-width: 100rem;
+            justify-content: center;
             margin: 0 auto;
             gap: 2rem;
         }
