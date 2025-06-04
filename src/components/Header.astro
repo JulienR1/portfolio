@@ -13,10 +13,18 @@ const keys = {
     en: {
         "": "Home",
         projects: "Projects",
+        saum: "SAUM",
+        trampolineintercite: "Trampoline Intercité",
+        cribbage: "Cribbage",
+        satisfactory: "Satisfactory solver",
     },
     fr: {
         "": "Accueil",
         projects: "Projets",
+        saum: "SAUM",
+        trampolineintercite: "Trampoline Intercité",
+        cribbage: "Cribbage",
+        satisfactory: "Résolveur Satisfactory",
     },
 };
 
@@ -57,7 +65,7 @@ const route = Astro.url.pathname.replace(/\/$/, "").split("/") as Array<
 
     {title.length > 0 && <h1>{title}</h1>}
 
-    <div id="header-language">
+    <div id="header-language" data-persist={navigation}>
         <LanguageToggle
             style={{ display: "block", width: "24px", height: "24px" }}
         />
@@ -120,7 +128,7 @@ const route = Astro.url.pathname.replace(/\/$/, "").split("/") as Array<
     }
 
     @media (min-width: 50em) {
-        header #header-language {
+        header #header-language:not([data-persist="true"]) {
             display: none;
         }
     }

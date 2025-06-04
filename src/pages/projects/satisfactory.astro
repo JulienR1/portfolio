@@ -1,5 +1,17 @@
 ---
-import Layout from "../../components/Layout.astro";
+import Project from "../../components/Project.astro";
+import WIP from "../../components/WIP.astro";
+import { translate } from "../../i18n";
+
+const t = translate(
+    {
+        en: { title: "Satisfactory solver" },
+        fr: { title: "Résolveur Satisfactory" },
+    },
+    Astro.currentLocale,
+);
 ---
 
-<Layout> satisfactory, wip </Layout>
+<Project title={t("title")}>
+    <WIP />
+</Project>

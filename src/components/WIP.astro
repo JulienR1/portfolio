@@ -1,0 +1,15 @@
+---
+import { translate } from "../i18n";
+
+const t = translate(
+    {
+        en: { message: "This page is still under construction." },
+        fr: { message: "Cette page est encore en cours de développement." },
+    },
+    Astro.currentLocale,
+);
+---
+
+<p>
+    {t("message")}
+</p>
