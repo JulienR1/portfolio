@@ -1,6 +1,6 @@
 {
     "saum": {
-        "img": "/saum.png",
+        "img": "/projects/saum.png",
         "en": {
             "title": "SAUM",
             "subtitle": "Universal and modular sensor station",
@@ -41,7 +41,7 @@
         ]
     },
     "trampolineintercite": {
-        "img": "/trampo.jpg",
+        "img": "/projects/trampo.jpg",
         "en": {
             "title": "Trampoline Intercité",
             "subtitle": "",
@@ -67,7 +67,7 @@
         ]
     },
     "satisfactory": {
-        "img": "/satisfactory.webp",
+        "img": "/projects/satisfactory.webp",
         "en": {
             "title": "Satisfactory resolver",
             "subtitle": "Custom graph building tool for <a href=\"https://www.satisfactorygame.com/\">Satisfactory</a>",
@@ -103,7 +103,7 @@
         ]
     },
     "cribbage": {
-        "img": "/cribbage.jpg",
+        "img": "/projects/cribbage.jpg",
         "en": {
             "title": "Cribbage",
             "subtitle": "Card game engine",

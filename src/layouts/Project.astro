@@ -75,6 +75,7 @@ const {
     }
 
     h2 {
+        padding-top: 0.5em;
         font-size: 1.2em;
         font-weight: 600;
     }
@@ -94,6 +95,50 @@ const {
 
     article {
         text-align: justify;
+        padding-bottom: 25vh;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        border: 1px solid black;
+        max-width: 100%;
+    }
+
+    img + em {
+        display: block;
+        text-align: center;
+        padding-top: 0.2em;
+    }
+
+    p:has(> img),
+    table {
+        padding-bottom: 1em;
+    }
+
+    table {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+
+    thead {
+        border-bottom: 1px solid black;
+    }
+
+    tr:first-of-type td {
+        padding-top: 0.4em;
+    }
+
+    th,
+    td {
+        padding: 0.2em 0.5em;
+
+        &:not(:last-of-type) {
+            border-right: 1px solid black;
+        }
     }
 
     @media (min-width: 50rem) {
