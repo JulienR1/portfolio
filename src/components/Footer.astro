@@ -1,4 +1,8 @@
 ---
+interface Props {
+    center?: boolean;
+}
+
 const astro = "https://astro.build";
 const pages = "https://pages.github.com/";
 const project = "https://github.com/JulienR1/portfolio/";
@@ -9,7 +13,7 @@ const icons = "https://fonts.google.com/icons";
 const fonts = "https://fonts.google.com";
 ---
 
-<footer>
+<footer class:list={[Astro.props.center && "center"]}>
     <p>
         {
             Astro.currentLocale === "en" ? (
@@ -98,6 +102,12 @@ const fonts = "https://fonts.google.com";
         footer {
             grid-column: 2;
             grid-row: 2;
+        }
+
+        footer.center {
+            max-width: 35rem;
+            margin: 0 auto;
+            text-align: center;
         }
     }
 </style>
