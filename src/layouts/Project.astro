@@ -1,0 +1,109 @@
+---
+import Header from "../components/Header.astro";
+import Layout from "./Layout.astro";
+import GitHub from "../logos/Github.astro";
+import Link from "../logos/Link.astro";
+import { translate } from "../i18n";
+
+interface Props {
+    frontmatter: { title: string; website?: string; repo?: string };
+    children: any;
+}
+
+const t = translate(
+    {
+        en: { github: "Open GitHub repo", link: "View project" },
+        fr: {
+            github: "Consulter le répertoire GitHub",
+            link: "Consulter le projet",
+        },
+    },
+    Astro.currentLocale,
+);
+
+const {
+    frontmatter: { title, website = "", repo = "" },
+} = Astro.props;
+---
+
+<Layout title={title}>
+    <article>
+        <Header title={title} navigation>
+            {
+                repo.length + website.length > 0 && (
+                    <div id="related-links">
+                        {repo.length > 0 && (
+                            <a
+                                href={repo}
+                                title={t("github")}
+                                aria-label={t("github")}
+                            >
+                                <GitHub />
+                            </a>
+                        )}
+
+                        {website.length > 0 && (
+                            <a
+                                href={website}
+                                title={t("link")}
+                                aria-label={t("link")}
+                            >
+                                <Link />
+                            </a>
+                        )}
+                    </div>
+                )
+            }
+        </Header>
+
+        <slot />
+    </article>
+</Layout>
+
+<style lang="scss" is:global>
+    #related-links {
+        display: flex;
+        gap: 0.3em;
+        font-size: 0.8em;
+
+        a {
+            display: block;
+            color: #303030;
+            width: 2em;
+            height: 2em;
+        }
+    }
+
+    h2 {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    ul.contains-task-list {
+        list-style-type: none;
+        padding: 0 0.5em;
+    }
+
+    li {
+        padding-top: 0.1em;
+    }
+
+    article {
+        text-align: justify;
+    }
+
+    @media (min-width: 50rem) {
+        #related-links {
+            gap: 0.6em;
+        }
+
+        body {
+            max-width: 60rem;
+            margin: 0 auto;
+        }
+    }
+</style>

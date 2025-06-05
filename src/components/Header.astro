@@ -7,6 +7,7 @@ import Chevron from "../logos/Chevron.astro";
 interface Props {
     title?: string;
     navigation?: boolean;
+    children?: any;
 }
 
 const keys = {
@@ -63,7 +64,11 @@ const route = Astro.url.pathname.replace(/\/$/, "").split("/") as Array<
         )
     }
 
-    {title.length > 0 && <h1>{title}</h1>}
+    <hgroup>
+        {title.length > 0 && <h1>{title}</h1>}
+        <slot />
+        {title.length > 0 && <span class="title-separator">&middot;</span>}
+    </hgroup>
 
     <div id="header-language" data-persist={navigation}>
         <LanguageToggle
@@ -105,14 +110,28 @@ const route = Astro.url.pathname.replace(/\/$/, "").split("/") as Array<
             }
         }
 
-        nav + h1 {
+        nav + hgroup {
             padding-top: 1em;
         }
 
-        h1 {
-            font-weight: 700;
-            font-size: 1.75em;
-            margin: 0;
+        hgroup {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+
+            h1 {
+                order: -2;
+                font-weight: 700;
+                font-size: 1.75em;
+                margin: 0;
+            }
+
+            .title-separator {
+                order: -1;
+                display: none;
+                font-weight: 400;
+                font-size: 2em;
+            }
         }
 
         > * {
@@ -127,9 +146,15 @@ const route = Astro.url.pathname.replace(/\/$/, "").split("/") as Array<
         }
     }
 
-    @media (min-width: 50em) {
-        header #header-language:not([data-persist="true"]) {
-            display: none;
+    @media (min-width: 50rem) {
+        header {
+            #header-language:not([data-persist="true"]) {
+                display: none;
+            }
+
+            hgroup > *:not(h1) + .title-separator {
+                display: block;
+            }
         }
     }
 </style>
