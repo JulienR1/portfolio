@@ -24,6 +24,10 @@ This separation allows for a good experience for every user.
 
 In time, the site will be editable by any authorized admin and will not require my intervention, all _while minimizing hosting and operating costs_.
 
+The planned structure is as follows:
+
+![Planned architecture](/projects/trampo/trampo-architecture.jpg)
+
 ### Roadmap
 
 - [ ] Reproduce original version
@@ -40,3 +44,9 @@ In time, the site will be editable by any authorized admin and will not require 
   - Automate complicated processes to reduce errors.
 - [ ] Admin portal
   - Create a more user-friendly UI to edit the website for any administrator.
+
+<style>
+    img {
+        border: none;
+    }
+</style>
