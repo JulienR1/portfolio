@@ -34,7 +34,10 @@ const keys = {
 const t = translate(keys, Astro.currentLocale);
 
 const { title = "", navigation = false } = Astro.props;
-const route = Astro.url.pathname.replace(/\/$/, "").split("/") as Array<
+const route = Astro.url.pathname
+    .replace(/\/$/, "")
+    .split("/")
+    .filter((section) => !Object.keys(keys).includes(section)) as Array<
     keyof (typeof keys)[Language]
 >;
 ---

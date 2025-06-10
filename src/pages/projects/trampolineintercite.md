@@ -10,7 +10,7 @@ layout: "/src/layouts/Project.astro"
 My local sports organization needed an updated website and I wanted to learn how to develop for the web.
 This project is a learning experience that grew into a published site.
 
-The original version is currently hosted on GoDaddy as static handwritten HTML, CSS and JS files with a very little bit or PHP sprinkled around.
+The original version is currently hosted on GoDaddy as static handwritten HTML, CSS and JS files with a very little bit of PHP sprinkled around.
 Updates are slow and error-prone, and the loading times are not the best.
 
 ## Modern version
