@@ -129,5 +129,33 @@
                 }
             }
         ]
+    },
+    "portfolio": {
+        "img": "/projects/initials.jpg",
+        "en": {
+            "title": "Portfolio",
+            "subtitle": "This website",
+            "description": "A website to summarize my profesionnal career as well as some of my side projects. It is a simple static and vanilla archive generated using Astro."
+        },
+        "fr": {
+            "title": "Portfolio",
+            "subtitle": "Ce site web",
+            "description": "Un site web pour résumer mon expérience professionnelle ainsi que certains de mes projets personnels. C'est une archive statique vanille générée à l'aide d'Astro."
+        },
+        "tags": [
+            "JavaScript",
+            "HTML&CSS",
+            "Astro",
+            "GitHub Pages"
+        ],
+        "showcases": [
+            {
+                "url": "https://github.com/JulienR1/portfolio",
+                "cta": {
+                    "en": "Check out the repo",
+                    "fr": "Consulter le repo"
+                }
+            }
+        ]
     }
 }
