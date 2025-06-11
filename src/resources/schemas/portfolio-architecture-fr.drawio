@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.4">
+  <diagram name="Page-1" id="-6wxAB3YJiMIXl8_KeTQ">
+    <mxGraphModel dx="826" dy="441" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="P57heRVRvNYTLODIQCyF-33" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="328" y="79" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-12" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="180" y="79" width="120" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-1" value="Archive statique" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="200" y="95" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="P57heRVRvNYTLODIQCyF-3" target="P57heRVRvNYTLODIQCyF-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-3" value="Utilisateur" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontSize=10;" parent="1" vertex="1">
+          <mxGeometry x="100" y="90" width="15" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="P57heRVRvNYTLODIQCyF-6" target="P57heRVRvNYTLODIQCyF-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-6" value="Astro build" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="95" width="66" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-10" value="Squarespace&lt;div&gt;Domains&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="115" y="30" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-15" value="GitHub Pages" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="201" y="60" width="79" height="19" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-9" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="150" y="65" width="10" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="P57heRVRvNYTLODIQCyF-34" value="GitHub Actions" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="329.75" y="60" width="86.5" height="19" as="geometry" />
+        </mxCell>
+        <mxCell id="CToJCYbktN3L5Gs0NQuV-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="CToJCYbktN3L5Gs0NQuV-2" target="P57heRVRvNYTLODIQCyF-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CToJCYbktN3L5Gs0NQuV-2" value="Activation lors de push" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="440" y="90" width="70" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
