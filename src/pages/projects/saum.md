@@ -74,7 +74,7 @@ As a summary, its main loop is as follows.
 <img src="/projects/saum/flow-en.jpg" alt="Loch flow diagram" style="padding-bottom: 1em;"/>
 <em>Simplified Loch loop cycle</em>
 
-## Pigeoche
+## Pigeon
 
 Pigeon is a custom binary protocol transmitted over UART to communicate between stations and with Atlanta.
 Each transmission has the following structure.
