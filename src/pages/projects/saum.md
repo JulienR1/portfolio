@@ -43,7 +43,7 @@ Each component is independent and is built to last a year.
 
 The following diagram summarizes the solution.
 
-![High level diagram of the solution](/projects/saum/highlevel.png)
+![High level diagram of the solution](/projects/saum/highlevel-en.png)
 _Simplified solution diagram_
 
 The stations are better detailed by the following CADs.
@@ -60,7 +60,7 @@ Both stations can be configured with a laptop using an external program (called 
 
 From a electronics and software standpoint, the different components are architectured as follows:
 
-![schema](/projects/saum/schema.svg)
+![schema](/projects/saum/schema-en.svg)
 _High level electronics and software schema_
 
 ## Loch
@@ -71,16 +71,16 @@ It is built to be as reliable and energy efficient as possible.
 
 As a summary, its main loop is as follows.
 
-<img src="/projects/saum/loch-flow.jpg" alt="Loch flow diagram" style="padding-bottom: 1em;"/>
+<img src="/projects/saum/flow-en.jpg" alt="Loch flow diagram" style="padding-bottom: 1em;"/>
 <em>Simplified Loch loop cycle</em>
 
-## Pigeon
+## Pigeoche
 
 Pigeon is a custom binary protocol transmitted over UART to communicate between stations and with Atlanta.
 Each transmission has the following structure.
 It is implemented in C and in Go.
 
-![Pigeon transmission structure](/projects/saum/pigeon.jpg)
+![Pigeon transmission structure](/projects/saum/pigeon-en.jpg)
 _Pigeon transmission structure_
 
 ## Atlanta
