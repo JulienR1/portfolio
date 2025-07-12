@@ -142,20 +142,32 @@ const tags = (Astro.props.frontmatter.tags ?? "")
         min-height: calc(100vh - 8em);
     }
 
-    img {
+    .horizontal {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
+
+    img,
+    video {
         display: block;
         margin: 0 auto;
         border: 1px solid black;
         max-width: min(100%, 600px);
     }
 
-    img + em {
+    img + em,
+    video + em,
+    .horizontal + em {
         display: block;
         text-align: center;
         padding-top: 0.2em;
     }
 
     p:has(> img),
+    p:has(> video),
     table {
         padding-bottom: 1em;
     }

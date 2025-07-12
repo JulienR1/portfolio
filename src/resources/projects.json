@@ -25,6 +25,13 @@
         ],
         "showcases": [
             {
+                "url": "https://github.com/SAMuCaptE/documentation",
+                "cta": {
+                    "en": "Read documentation (french)",
+                    "fr": "Consulter la documentation"
+                }
+            },
+            {
                 "url": "https://www.youtube.com/watch?v=PxVDL2o9Jzc",
                 "cta": {
                     "en": "Watch presentation video (french)",
