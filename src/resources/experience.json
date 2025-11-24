@@ -1,4 +1,30 @@
 {
+    "brp": {
+        "en": {
+            "start": "August 2025",
+            "end": "Today",
+            "title": "EW GUI Developer",
+            "company": "BRP",
+            "url": "https://www.brp.com/en/",
+            "subtitle": "",
+            "description": "Tasked with implementing many vehicle's embedded interface.<br/>Developed internal tools to facilitate vehicle diagnostics and monitoring."
+        },
+        "fr": {
+            "start": "Août 2025",
+            "end": "Aujourd'hui",
+            "title": "Développeur GUI EW",
+            "company": "BRP",
+            "url": "https://www.brp.com/fr/",
+            "subtitle": "",
+            "description": "En charge d'implémenter l'interface embarqué de plusieurs véhicules.<br/>Développement d'outils internes pour faciliter le diagnostic et le suivi des véhicules."
+        },
+        "tags": [
+            "Embedded Wizard",
+            "C",
+            "Python",
+            "Chora"
+        ]
+    },
     "agilean": {
         "en": {
             "start": "May",
