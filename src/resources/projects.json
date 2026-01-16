@@ -1,168 +1,161 @@
 {
-    "saum": {
-        "img": "/projects/saum.png",
-        "en": {
-            "title": "SAUM",
-            "subtitle": "Universal and modular sensor station",
-            "description": "Built a independent and submersible physical station to monitor climat change in Canada's northern lakes. Associated with UdeS. Deployed at <strong>Churchill</strong> (North of Manitoba) in August 2024."
-        },
-        "fr": {
-            "title": "SAUM",
-            "subtitle": "Station Accueil Universelle Modulaire",
-            "description": "Construction d'une station physique indépendante et submersible pour monitorer le changement climatique dans les lacs nordiques du Canada. Associé avec l'UdeS. Déploiement effectué à <strong>Churchill</strong> (Nord du Manitoba) en août 2024."
-        },
-        "tags": [
-            "C",
-            "STM32",
-            "UART",
-            "R&D",
-            "Go",
-            "OpenAPI",
-            "TypeScript",
-            "React",
-            "TailwindCSS",
-            "CLI"
-        ],
-        "showcases": [
-            {
-                "url": "https://github.com/SAMuCaptE/documentation",
-                "cta": {
-                    "en": "Read documentation (french)",
-                    "fr": "Consulter la documentation"
-                }
-            },
-            {
-                "url": "https://www.youtube.com/watch?v=PxVDL2o9Jzc",
-                "cta": {
-                    "en": "Watch presentation video (french)",
-                    "fr": "Visionner la vidéo de présentation"
-                }
-            },
-            {
-                "url": "https://padlet.com/PMC_UdeS/projets-majeurs-de-conception-2024-66e-promotion-8kzv9zijms0qfj1w/wish/pRxDZ4d2NABMZ183",
-                "cta": {
-                    "en": "Read project summary (french)",
-                    "fr": "Consulter le résumé du projet"
-                }
-            }
-        ]
+  "ewfmt": {
+    "img": "/projects/ewfmt/ew.jpg",
+    "en": {
+      "title": "EW code formatter",
+      "subtitle": "A code lexer, parser and formatter to standardize EW projects",
+      "description": "It is much easier to work in a code base where everything looks and feel the same (in my opinion). <i>ewfmt</i> is an opiniated Chora code formatter replacing tideous manual work."
     },
-    "trampolineintercite": {
-        "img": "/projects/trampo.jpg",
-        "en": {
-            "title": "Trampoline Intercité",
-            "subtitle": "",
-            "description": "Website for a local sports organization. This project was initially used as a learning experience and as now evolved in a larger goal. A full administration portal and a complet CI/CD pipeline are currently in the works."
-        },
-        "fr": {
-            "title": "Trampoline Intercité",
-            "subtitle": "",
-            "description": "Site web pour une organisation locale de sport. Ce project était initialement une occasion d'apprendre mais est maintenant devenu un plus grand objectif. Un portal d'administration ainsi qu'un pipeline CI/CD complet sont présentement en cours de développement."
-        },
-        "tags": [
-            "HTML&CSS",
-            "JavaScript"
-        ],
-        "showcases": [
-            {
-                "url": "https://trampolineintercite.com",
-                "cta": {
-                    "en": "Visit website",
-                    "fr": "Consulter le site"
-                }
-            }
-        ]
+    "fr": {
+      "title": "Formateur EW",
+      "subtitle": "Un analyser lexical et syntaxique ainsi qu'un formateur",
+      "description": "Il est beaucoup plus facile de travailler dans une base de code où tout est similaire et se ressemble (à mon avis). <i>ewfmt</i> est un formateur Chora personnalisé remplaçant le travail manuel fatiguant."
     },
-    "satisfactory": {
-        "img": "/projects/satisfactory.webp",
-        "en": {
-            "title": "Satisfactory resolver",
-            "subtitle": "Custom graph building tool for <a href=\"https://www.satisfactorygame.com/\">Satisfactory</a>",
-            "description": "A custom tool to easily graph out factories in Satisfactory and compare various recipe options. Made for fun and to explore graphs more. The project has its <i>qwerks</i> but it meets my specific needs."
-        },
-        "fr": {
-            "title": "Résolveur Satisfactory",
-            "subtitle": "Outil personnalisé de graphes pour <a href=\"https://www.satisfactorygame.com/\">Satisfactory</a>",
-            "description": "Un outil spécifique pour facilement planifier des chaînes de production dans Satisfactory sous forme de graphes et comparer diverses recettes alternatives. Fait en tant que défi pour le plaisir et pour explorer les graphes davantage. Le projet a ses spécificités mais il répond à mes besoins."
-        },
-        "tags": [
-            "React",
-            "TypeScript",
-            "TailwindCSS",
-            "shadcn/ui",
-            "React Flow"
-        ],
-        "showcases": [
-            {
-                "url": "https://julienr1.github.io/satisfactory-resolver/",
-                "cta": {
-                    "en": "Try it out",
-                    "fr": "Essayez-le"
-                }
-            },
-            {
-                "url": "https://github.com/JulienR1/satisfactory-resolver",
-                "cta": {
-                    "en": "Check out the repo",
-                    "fr": "Consulter le repo"
-                }
-            }
-        ]
+    "tags": ["Go", "Embedded Wizard", "Chora", "CLI"],
+    "showcases": [
+      {
+        "url": "https://github.com/JulienR1/ewfmt",
+        "cta": {
+          "en": "Check out the repo",
+          "fr": "Consulter le repo"
+        }
+      }
+    ]
+  },
+  "saum": {
+    "img": "/projects/saum.png",
+    "en": {
+      "title": "SAUM",
+      "subtitle": "Universal and modular sensor station",
+      "description": "Built a independent and submersible physical station to monitor climat change in Canada's northern lakes. Associated with UdeS. Deployed at <strong>Churchill</strong> (North of Manitoba) in August 2024."
     },
-    "cribbage": {
-        "img": "/projects/cribbage.jpg",
-        "en": {
-            "title": "Cribbage",
-            "subtitle": "Card game engine",
-            "description": "Simple cribbage game engine made in Go. Handles every rule and various point variations. Async hooks to link up any user-facing solution (web UI currently in progress)."
-        },
-        "fr": {
-            "title": "Cribbage",
-            "subtitle": "Moteur de jeu de cartes",
-            "description": "Moteur de jeu simple pour cribbage fait avec Go. Gère les différentes règles et les combinaisons de cartes faisant des points. <i>Hooks</i> asynchrones pour connecter un interface utilisateur divers (UI web en cours de développement)."
-        },
-        "tags": [
-            "Go",
-            "HTMX",
-            "WebSocket",
-            "TypeScript"
-        ],
-        "showcases": [
-            {
-                "url": "https://github.com/JulienR1/cribbage",
-                "cta": {
-                    "en": "Check out the repo",
-                    "fr": "Consulter le repo"
-                }
-            }
-        ]
+    "fr": {
+      "title": "SAUM",
+      "subtitle": "Station Accueil Universelle Modulaire",
+      "description": "Construction d'une station physique indépendante et submersible pour monitorer le changement climatique dans les lacs nordiques du Canada. Associé avec l'UdeS. Déploiement effectué à <strong>Churchill</strong> (Nord du Manitoba) en août 2024."
     },
-    "portfolio": {
-        "img": "/projects/initials.jpg",
-        "en": {
-            "title": "Portfolio",
-            "subtitle": "This website",
-            "description": "A website to summarize my profesionnal career as well as some of my side projects. It is a simple static and vanilla archive generated using Astro."
-        },
-        "fr": {
-            "title": "Portfolio",
-            "subtitle": "Ce site web",
-            "description": "Un site web pour résumer mon expérience professionnelle ainsi que certains de mes projets personnels. C'est une archive statique vanille générée à l'aide d'Astro."
-        },
-        "tags": [
-            "JavaScript",
-            "HTML&CSS",
-            "Astro",
-            "GitHub Pages"
-        ],
-        "showcases": [
-            {
-                "url": "https://github.com/JulienR1/portfolio",
-                "cta": {
-                    "en": "Check out the repo",
-                    "fr": "Consulter le repo"
-                }
-            }
-        ]
-    }
+    "tags": ["C", "STM32", "UART", "R&D", "Go", "OpenAPI", "TypeScript", "React", "TailwindCSS", "CLI"],
+    "showcases": [
+      {
+        "url": "https://github.com/SAMuCaptE/documentation",
+        "cta": {
+          "en": "Read documentation (french)",
+          "fr": "Consulter la documentation"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=PxVDL2o9Jzc",
+        "cta": {
+          "en": "Watch presentation video (french)",
+          "fr": "Visionner la vidéo de présentation"
+        }
+      },
+      {
+        "url": "https://padlet.com/PMC_UdeS/projets-majeurs-de-conception-2024-66e-promotion-8kzv9zijms0qfj1w/wish/pRxDZ4d2NABMZ183",
+        "cta": {
+          "en": "Read project summary (french)",
+          "fr": "Consulter le résumé du projet"
+        }
+      }
+    ]
+  },
+  "trampolineintercite": {
+    "img": "/projects/trampo.jpg",
+    "en": {
+      "title": "Trampoline Intercité",
+      "subtitle": "",
+      "description": "Website for a local sports organization. This project was initially used as a learning experience and as now evolved in a larger goal. A full administration portal and a complet CI/CD pipeline are currently in the works."
+    },
+    "fr": {
+      "title": "Trampoline Intercité",
+      "subtitle": "",
+      "description": "Site web pour une organisation locale de sport. Ce project était initialement une occasion d'apprendre mais est maintenant devenu un plus grand objectif. Un portal d'administration ainsi qu'un pipeline CI/CD complet sont présentement en cours de développement."
+    },
+    "tags": ["HTML&CSS", "JavaScript"],
+    "showcases": [
+      {
+        "url": "https://trampolineintercite.com",
+        "cta": {
+          "en": "Visit website",
+          "fr": "Consulter le site"
+        }
+      }
+    ]
+  },
+  "satisfactory": {
+    "img": "/projects/satisfactory.webp",
+    "en": {
+      "title": "Satisfactory resolver",
+      "subtitle": "Custom graph building tool for <a href=\"https://www.satisfactorygame.com/\">Satisfactory</a>",
+      "description": "A custom tool to easily graph out factories in Satisfactory and compare various recipe options. Made for fun and to explore graphs more. The project has its <i>qwerks</i> but it meets my specific needs."
+    },
+    "fr": {
+      "title": "Résolveur Satisfactory",
+      "subtitle": "Outil personnalisé de graphes pour <a href=\"https://www.satisfactorygame.com/\">Satisfactory</a>",
+      "description": "Un outil spécifique pour facilement planifier des chaînes de production dans Satisfactory sous forme de graphes et comparer diverses recettes alternatives. Fait en tant que défi pour le plaisir et pour explorer les graphes davantage. Le projet a ses spécificités mais il répond à mes besoins."
+    },
+    "tags": ["React", "TypeScript", "TailwindCSS", "shadcn/ui", "React Flow"],
+    "showcases": [
+      {
+        "url": "https://julienr1.github.io/satisfactory-resolver/",
+        "cta": {
+          "en": "Try it out",
+          "fr": "Essayez-le"
+        }
+      },
+      {
+        "url": "https://github.com/JulienR1/satisfactory-resolver",
+        "cta": {
+          "en": "Check out the repo",
+          "fr": "Consulter le repo"
+        }
+      }
+    ]
+  },
+  "cribbage": {
+    "img": "/projects/cribbage.jpg",
+    "en": {
+      "title": "Cribbage",
+      "subtitle": "Card game engine",
+      "description": "Simple cribbage game engine made in Go. Handles every rule and various point variations. Async hooks to link up any user-facing solution (web UI currently in progress)."
+    },
+    "fr": {
+      "title": "Cribbage",
+      "subtitle": "Moteur de jeu de cartes",
+      "description": "Moteur de jeu simple pour cribbage fait avec Go. Gère les différentes règles et les combinaisons de cartes faisant des points. <i>Hooks</i> asynchrones pour connecter un interface utilisateur divers (UI web en cours de développement)."
+    },
+    "tags": ["Go", "HTMX", "WebSocket", "TypeScript"],
+    "showcases": [
+      {
+        "url": "https://github.com/JulienR1/cribbage",
+        "cta": {
+          "en": "Check out the repo",
+          "fr": "Consulter le repo"
+        }
+      }
+    ]
+  },
+  "portfolio": {
+    "img": "/projects/initials.jpg",
+    "en": {
+      "title": "Portfolio",
+      "subtitle": "This website",
+      "description": "A website to summarize my profesionnal career as well as some of my side projects. It is a simple static and vanilla archive generated using Astro."
+    },
+    "fr": {
+      "title": "Portfolio",
+      "subtitle": "Ce site web",
+      "description": "Un site web pour résumer mon expérience professionnelle ainsi que certains de mes projets personnels. C'est une archive statique vanille générée à l'aide d'Astro."
+    },
+    "tags": ["JavaScript", "HTML&CSS", "Astro", "GitHub Pages"],
+    "showcases": [
+      {
+        "url": "https://github.com/JulienR1/portfolio",
+        "cta": {
+          "en": "Check out the repo",
+          "fr": "Consulter le repo"
+        }
+      }
+    ]
+  }
 }
