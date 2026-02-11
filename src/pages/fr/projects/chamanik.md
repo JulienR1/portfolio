@@ -135,9 +135,9 @@ Le tableau suivant présente un résumé des outils utilisés.
 
 | Outil                              | Environnement                   | Fonctionnalité                                                                           | Besoin                                                                                 |
 | ---------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Microcontrôleur                    | Embarqué, spécifique au besoin  | Contrôler les énigmes, interfacer avec les capteurs, produire une expérience             | Aucune latence                                                                         |
+| Microcontrôleur                    | Embarqué, spécifique au besoin  | Contrôler les énigmes, interfacer avec les capteurs, produire une expérience immersive   | Aucune latence                                                                         |
 | Broker MQTT                        | Machine dédiée et robuste       | Gérer les souscriptions et publications MQTT, _scaling_ horizontal                       | Isolation des composantes, fiabilité                                                   |
-| Server web                         | Machine dédiée et robuste       | Fournir la version à jour du panneau de contrôle                                         | Rendre le panneau de contrôle accessible sur n'importe quel appareil au sein du réseau |
+| Serveur web                        | Machine dédiée et robuste       | Fournir la version à jour du panneau de contrôle                                         | Rendre le panneau de contrôle accessible sur n'importe quel appareil au sein du réseau |
 | Panneau de contrôle<br/>(page web) | Navigateur web, appareil mobile | Donner une visibilité claire sur l'état de Chamanik et en fournir le contrôle nécessaire | Interface claire qui se met à jour rapidement et facilement                            |
 
 Bien que simples, les vidéos suivantes présentent la différence entre les deux architectures.<br/>
