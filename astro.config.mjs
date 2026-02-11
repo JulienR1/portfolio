@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import { resolve } from "path";
 import sitemap from "@astrojs/sitemap";
+import mermaid from "astro-mermaid";
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,6 +28,7 @@ export default defineConfig({
   },
 
   integrations: [
+    mermaid(),
     sitemap({
       i18n: {
         defaultLocale: "en",

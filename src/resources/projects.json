@@ -1,4 +1,24 @@
 {
+  "chamanik": {
+    "img": "/projects/chamanik/chamanik.jpg",
+    "en": {
+      "title": "Chamanik",
+      "subtitle": "A much needed IoT upgrade",
+      "description": "Reduced communication delays from <b>5 seconds</b> to <b>less than 10 milliseconds</b> throughout the system. Stabilized every electronic module in regards to their specific behavior and needs. Defined the specific functional requirements and put strategies in place to ensure their fulfilment.<br/><br/>In short, made the game <b>dependable</b>."
+    },
+    "fr": {
+      "title": "Chamanik",
+      "subtitle": "Une amélioration vers le IoT bien méritée",
+      "description": "Réduction dans les délais de communication du système complet, passant de <b>5 secondes</b> à <b>moins de 10 millisecondes</b>. Stabilisation de tous les modules électroniques selon leurs besoins spécifiques. Définition des comportements souhaités et mise en place de stratégies afin d'en assurer l'atteinte.<br/><br/>Somme toute, mise de l'avant de la <b>fiabilité</b> du jeu."
+    },
+    "tags": ["C", "UART", "SPI", "MQTT", "Arduino", "ESP32", "Go", "TS"],
+    "showcases": [
+      {
+        "url": "https://www.escaparium.ca/sherbrooke/chamanik",
+        "cta": { "en": "Play the game", "fr": "Jouer l'expérience" }
+      }
+    ]
+  },
   "ewfmt": {
     "img": "/projects/ewfmt/ew.jpg",
     "en": {
