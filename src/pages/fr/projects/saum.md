@@ -5,7 +5,7 @@ repo: "https://github.com/SAMuCaptE/documentation"
 ---
 
 SAUM est un projet de recherche étudiant visant à **monitorer l'impact du changement climatique sur les lacs nordiques canadiens** en obtenant certaines données physicochimiques utiles tout au long de l'année.
-Il est mené par le [Laboratoire Nanotechnologies et Nanosystèmes](https://www.usherbrooke.ca/ln2/ et est associé avec l'[Université de Sherbrooke](https://usherbrooke.ca.
+Il est mené par le [Laboratoire Nanotechnologies et Nanosystèmes](https://www.usherbrooke.ca/ln2/) et est associé avec l'[Université de Sherbrooke](https://usherbrooke.ca).
 
 ## Motivation du projet
 
